@@ -40,6 +40,7 @@ gem 'spring',        group: :development
 
 gem "slim"
 gem "kaminari"
+gem "sorcery"
 
 group :test, :development do
   gem "rspec-rails"

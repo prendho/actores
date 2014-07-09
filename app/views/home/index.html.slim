@@ -1,8 +1,13 @@
-h1.text-center Bienvenido
-
 .intro
+  h1.text-center Bienvenido
+
   p Esta es la introducción a este sitio. Debemos explicar de qué se trata, para qué clase de usuarios es y cómo deben estos usuarios encontrar su contraseña por primera vez
   p Bla, bla bla
+
+  .text-center
+    = link_to "Ingresar", "#", id: "login-btn", class: "btn btn-lg btn-primary"
+
+.intro-login-form = render "login_form"
 
 .intro-sponsors
   = image_tag "/images/aei.png"
