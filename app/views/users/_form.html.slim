@@ -1,17 +1,27 @@
 h3 = "#{@user.new_record? ? "Nuevo" : "Editar"} usuario"
 = form_for @user do |f|
-  .form-group
-    = f.label :nombres
-    = f.text_field :nombres, class: "form-control"
-  .form-group
-    = f.label :email
-    = f.email_field :email, class: "form-control", required: true
-  - unless @user.new_record?
-    .form-group
-      = f.label :password, "Contraseña"
-      = f.password_field :password, class: "form-control"
-  .form-group
-    = f.check_box :admin
-    = f.label :admin, "Administrador"
+  .row
+    .col-sm-3.text-right
+      = image_tag f.object.gravatar(300), class: "user-gravatar-big"
+      .help-block.small.text-center
+        | Imágenes de
+        a< href="http://gravatar.com" gravatar
+    .col-sm-9
+      .form-group
+        = f.label :nombres
+        = f.text_field :nombres, class: "form-control"
+      .form-group
+        = f.label :email
+        = f.email_field :email, class: "form-control", required: true
+      .form-group
+        = f.label :actor_id, "Actor"
+        = f.select :actor_id, possible_actores, {}, class: "form-control"
+      - unless @user.new_record?
+        .form-group
+          = f.label :password, "Contraseña"
+          = f.password_field :password, class: "form-control"
+      .form-group
+        = f.check_box :admin
+        = f.label :admin, "Administrador"
   .actions
     = f.submit "Enviar", class: "btn btn-primary", data: { disable_with: "Enviando" }

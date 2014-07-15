@@ -45,4 +45,9 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:nombres, :email, :password)
   end
+
+  def possible_actores
+    Actor.all.map { |a| [a.nombre, a.id]}
+  end
+  helper_method :possible_actores
 end
