@@ -15,4 +15,5 @@
 //= require turbolinks
 //= require bootstrap.min
 //= require alertify.min
+//= require jquery.dataTables.min
 //= require_tree .
