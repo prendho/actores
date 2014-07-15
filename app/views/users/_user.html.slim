@@ -1,0 +1,9 @@
+.user.row
+  .col-xs-1.user-image = image_tag user.gravatar
+  .col-xs-11
+    .nombres = user.nombres
+    .info
+      = link_to user.email, "mailto:#{user.email}"
+      - if user.admin?
+        span.label.label-default admin
+    = link_to "", edit_user_path(user), class: "glyphicon glyphicon-edit"

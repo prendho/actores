@@ -9,5 +9,6 @@ html
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
   body
-    = render "main_navbar" if current_user
-    #main = yield
+    #main
+      = render "layouts/main_navbar" if current_user
+      = yield

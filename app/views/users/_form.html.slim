@@ -1,0 +1,17 @@
+h3 = "#{@user.new_record? ? "Nuevo" : "Editar"} usuario"
+= form_for @user do |f|
+  .form-group
+    = f.label :nombres
+    = f.text_field :nombres, class: "form-control"
+  .form-group
+    = f.label :email
+    = f.email_field :email, class: "form-control", required: true
+  - unless @user.new_record?
+    .form-group
+      = f.label :password, "Contraseña"
+      = f.password_field :password, class: "form-control"
+  .form-group
+    = f.check_box :admin
+    = f.label :admin, "Administrador"
+  .actions
+    = f.submit "Enviar", class: "btn btn-primary", data: { disable_with: "Enviando" }
