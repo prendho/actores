@@ -2,10 +2,12 @@ h2 Iniciar sesión
 
 p Escribe tu dirección de correo y contraseña
 
-= form_tag sessions_path do
+= form_tag sessions_path, remote: true do
   .field
     = email_field_tag :email, params[:email], class: "form-control", placeholder: "Email"
   .field
     = password_field_tag :password, nil, class: "form-control", placeholder: "Contraseña"
+  = check_box_tag :remember_me
+  = label_tag :remember_me, "No cerrar sesión"
   .actions
     = submit_tag "Iniciar sesión", class: "btn btn-primary", data: { disable_with: "Enviando.." }

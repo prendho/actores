@@ -3,4 +3,6 @@ Rails.application.routes.draw do
 
   resources :users
   resources :sessions, only: :create
+
+  get "/logout", to: "sessions#destroy", as: :logout
 end
