@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :require_admin
 
   def index
-    @users = User.all
+    @users = User.all.includes(:actor)
   end
 
   def new
@@ -43,11 +43,11 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:nombres, :email, :password)
+    params.require(:user).permit(:nombres, :email, :password, :actor_id)
   end
 
   def possible_actores
-    Actor.all.map { |a| [a.nombre, a.id]}
+    Actor.sorted.map { |a| [a.nombre, a.id]}
   end
   helper_method :possible_actores
 end

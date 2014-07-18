@@ -1,4 +1,13 @@
 .pull-right = link_to "", new_user_path, class: "glyphicon glyphicon-plus btn btn-default"
 h3 = pluralize @users.count, "usuario", "usuarios"
 
-.user-list = render @users
+table.datatables.users-table
+  thead
+    tr
+      th Nombres
+      th Email
+      th Actor
+      th Permisos
+      th
+  tbody
+    = render @users

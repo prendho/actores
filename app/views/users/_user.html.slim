@@ -1,9 +1,10 @@
-.user.row
-  .col-xs-1.user-image = image_tag user.gravatar
-  .col-xs-11
-    .nombres = user.nombres
-    .info
-      = link_to user.email, "mailto:#{user.email}"
-      - if user.admin?
-        span.label.label-default admin
-    = link_to "", edit_user_path(user), class: "glyphicon glyphicon-edit"
+tr.user
+  td
+    = image_tag user.gravatar, class: "user-gravatar-tiny"
+    = user.nombres
+  td = link_to user.email, "mailto:#{user.email}"
+  td = user.actor
+  td
+    - if user.admin?
+      span.label.label-default admin
+  td = link_to "", edit_user_path(user), class: "glyphicon glyphicon-edit"

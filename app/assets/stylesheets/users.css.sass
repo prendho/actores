@@ -1,19 +1,18 @@
-.user-list
+@mixin gravatar
+  border-radius: 50%
+
+.users-table
+  font-size: 15px
   .user
     margin: 1em 0
     border-bottom: 1px solid #eee
-    .user-image
-      text-align: right
-    .nombres
-      font-size: 1.1em
-    .label
-      margin-left: 0.5em
-    img
-      max-width: 40px
-      max-height: 40px
-      border-radius: 50%
 
 .user-gravatar-big
   max-width: 160px
   max-height: 160px
-  border-radius: 50%
+  @include gravatar
+
+.user-gravatar-tiny
+  max-width: 30px
+  max-height: 30px
+  @include gravatar

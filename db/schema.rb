@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140718223135) do
+ActiveRecord::Schema.define(version: 20140718224602) do
 
   create_table "actores", force: true do |t|
     t.string   "nombre",     null: false
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 20140718223135) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "actores", ["nombre"], name: "index_actores_on_nombre", using: :btree
 
   create_table "grupos_preguntas", force: true do |t|
     t.string "title"
