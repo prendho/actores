@@ -16,4 +16,5 @@
 //= require bootstrap.min
 //= require alertify.min
 //= require jquery.dataTables.min
+//= require chosen.jquery.min
 //= require_tree .

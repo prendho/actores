@@ -14,6 +14,7 @@
  *= require alertify.core
  *= require alertify.default
  *= require jquery.dataTables.min
+ *= require chosen.min
  *= require_tree .
  *= require_self
  */
