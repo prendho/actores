@@ -15,7 +15,7 @@ h3 = "#{@user.new_record? ? "Nuevo" : "Editar"} usuario"
         = f.email_field :email, class: "form-control", required: true
       .form-group
         = f.label :actor_id, "Actor"
-        = f.select :actor_id, possible_actores, {}, class: "form-control chosen"
+        = f.select :actor_id, possible_actores, {include_blank: true}, class: "form-control chosen"
       - unless @user.new_record?
         .form-group
           = f.label :password, "Contraseña"
