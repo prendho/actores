@@ -1,0 +1,83 @@
+actores:
+  - nombre: Asociación Ecuatoriana de Software
+    acronimo: AESOFT
+    descripcion: Organización privada sin fines de lucro que fomenta el crecimiento del sector software, mediante acciones coordinadas entre empresa, academia y gobierno para impulsar el desarrollo nacional basado en tecnologías de la información.
+  - nombre: Asociación de Jóvenes Emprendedores
+    acronimo: AJE
+    descripcion: Asociación privada multisectorial, que agrupa y defiende los intereses de los jóvenes, dándoles la ayuda necesaria para emprender y conseguir el éxito de sus proyectos e iniciativas, gracias a los convenios logrados con instituciones públicas y privadas.
+  - nombre: Banco Solidario
+    descripcion: Institución financiera  constituida al amparo de la Ley General de Instituciones del Sistema Financiero, sometida al control y vigilancia de la Superintendencia de Bancos y Seguros. Ofrecen financiamiento a través de microcréditos con visión social.
+  - nombre: Banco de Desarrollo de América Latina
+    acronimo: CAF
+    descripcion: Institución financiera de cooperación internacional que promueve un modelo de desarrollo sostenible, mediante operaciones de crédito, recursos no reembolsables y apoyo en la estructuración técnica y financiera de proyectos de los sectores público y privado.
+  - nombre: Cámara de Comercio de Guayaquil
+    descripcion: Organización privada sin fines de lucro, que busca impulsar el desarrollo del comercio, las fuentes de riqueza y negocios en general; procurar la prosperidad de sus socios, a quienes prestará respaldo y cooperación para el desarrollo de sus actividades, y los servicios necesarios.
+  - nombre: Cámara de Comercio e Industria Ecuatoriano Colombiana
+    acronimo: CAMECOL
+    descripcion: Organización que agrupa a exportadores, comerciantes, industriales, inversionistas, artistas y empresas de turismo, vinculados estrechamente al desarrollo de las relaciones productivas, económicas, de integración social y cultural ente Colombia y Ecuador generando una relación estable.
+  - nombre: Corporación para el Emprendimiento e Innovación
+    acronimo: CEIE
+    descripcion: Corporación que ofrece un espacio de pensamiento que a partir de la investigación y el análisis de mejores practicas, coordinará con actores del ecosistema para fomentar el emprendimiento y la innovación mediante proyectos especificos.
+  - nombre: Consorcio de Gobiernos Autónomos Provinciales del Ecuador
+    acronimo: CONGOPE
+    descripcion: Entidad pública de carácter asociativo que representa a todos los Gobiernos Autónomos Descentralizados Provinciales del país.
+  - nombre: Conquito
+    descripcion: Corporación privada sin fines de lucro, que busca impulsar el desarrollo económico en la ciudad de Quito sostenible promoviendo la generación de riqueza, empleo, innovación e infraestructura adecuada para la operación y fortalecimiento del ecosistema empresarial. Tienen dos unidades, la una se encarga de emprendimientos de base tecnológica y la otra se encarga de EPS.
+  - nombre: Consejo de Cámaras
+    descripcion: Entidad privada sin fines de lucro que agremia a cámaras y asociaciones productivas a nivel nacional.
+  - nombre: Corporación Favorita
+    descripcion: Entidad privada enfocada a la provisión de productos y servicios de óptima calidad, de la manera más eficiente y rentable.
+  - nombre: Corporación GPF
+    descripcion: Entidad privada que busca contribuir al bienestar de la comunidad, proveyendo servicios y productos de calidad.
+  - nombre: Komm
+    descripcion: Empresa de consultoría especializada en estrategias comunicativas.
+  - nombre: Saltivery Ogilvy
+    descripcion: Agencia de publicidad orientada siempre a los resultados y a la efectividad en beneficio de sus clientes.
+  - nombre: CARANA
+    descripcion: Empresa de consultoría que diseña, dirige y ofrece las estrategias de crecimiento económico para el gobierno, las empresas privadas y los organismos donantes internacionales.
+  - nombre: Auconsis
+    descripcion: Empresa privada que ofrece servicios de automatización de procesos, consultoría, incubación de emprendedores y generación de convocatorias, promoviendo la mejora de resultados en las organizaciones a través de innovación tecnológica.
+  - nombre: Nutrivital
+    descripcion: Empresa privada que provee productos alimenticios saludables de alta calidad.
+  - nombre: Play and Build
+    descripcion: Empresa de consultoría basada en la innovación y creatividad para el desarrollo y potenciación de individuos y organizaciones.
+  - nombre: Fundación Crisfe
+    descripcion: Organización sin fines de lucro que fomenta la responsabilidad social y busca el desarrollo integral sustentable para fortalecer y desarrollar iniciativas emprendedoras, a través de selección y formación de emprendedores.
+  - nombre: Ministerio de Industrias y Producción
+    descripcion: Institución pública que impulsa el desarrollo del sector productivo industrial y artesanal, a través de la formulación y ejecución de políticas públicas, planes, programas y proyectos que incentiven la inversión e innovación tecnológica para promover la producción de bienes y servicios con alto valor agregado y de calidad.
+  - nombre: Grupo KFC
+    descripcion: Corporación nacional presente como la cadena de restaurantes más grande del Ecuador.
+  - nombre: Humboldt Management
+    descripcion: Empresa privada especializada en selección a nivel ejecutivo y gerencial tanto para empresas nacionales y multinacionales.
+  - nombre: Instituto Ecuatoriano de Propiedad Intelectual
+    acronimo: IEPI
+    descripcion: Ente estatal que regula y controla la aplicación de las leyes de la propiedad intelectual, es decir, las creaciones, comprometida con la promoción de la creación intelectual y su protección. Promueve una gestión de calidad, talento humano competitivo y servicios técnicos.
+  - nombre: Losning Business Solutions
+    descripcion: Empresa consultora especializada en dirección general y finanzas corporativas.
+  - nombre: SDR Lawyers
+    descripcion: Estudio jurídico especializado que busca fomentar el desarrollo empresarial.
+  - nombre: Servicio Ecuatoriano de Entrega Inmediata
+    acronimo: SEDEI
+    descripcion: Servicio Ecuatoriano de entrega inmediata (SEDEI – TBS SHIPPING) es la empresa Ecuatoriana especializada en servicios de logística y transporte a nivel mundial.
+  - nombre: Startups and Ventures
+    descripcion: Firma especializada en servicios de asesoría y consultoría empresarial en las áreas de emprendimiento e intra emprendimiento.
+  - nombre: Super Paco
+    descripcion: Empresa privada enfocada en la provisión de productos de papelería y tecnología.
+  - nombre: RIPCONCIV
+    descripcion: Empresa privada dedicada a la construcción en proyectos de infraestructura (puentes, drenajes, puertos) y proyectos inmobiliarios.
+  - nombre: Universidad Técnica Particular de Loja
+    acronimo: UTPL
+    descripcion: Institución autónoma líder en educación, con finalidad social y pública, que imparte enseñanza, desarrolla investigaciones con libertad científica-administrativa, mantiene un modelo educativo activo de innovación, que se traduce en el liderazgo de servicio y conformación  de agentes de progreso en los planes de desarrollo del país.
+  - nombre: Teojama Comercial S. A.
+    descripcion: Empresa privada especialista en la comercialización de camiones, maquinaria para la producción y provisión de servicio técnico a los equipos mencionados.
+  - nombre: TEVCOL
+    descripcion: Empresa líder en servicios de transporte de valores, así como en el desarrollo de una serie de importantes servicios complementarios de seguridad integral para la banca, la industria y el comercio nacional e internacional.
+  - nombre: TRANSFUEL
+    descripcion: Empresa privada reconocida por ser el primer abastecedor de bunker y de cabotaje en todos los puertos ecuatorianos operando con altos estándares de eficiencia y comprometidos con la protección del medio ambiente, la seguridad de la vida en el mar y la aplicación de prácticas de responsabilidad social.
+  - nombre: Universidad Andina Simón Bolívar - Observatorio PyME
+    descripcion: '"Observatorio de la pequeña y mediana empresa –PYME-"; programa impartido por la Universidad Andina Simón Bolivar, el cual tiene como propósito principal convertirse en un centro de generación y análisis de información relacionada al sector productivo ecuatoriano.'
+  - nombre: Universidad San Francisco de Quito
+    acronimo: USFQ
+    descripcion: Universidad líder global en educación,  mantiene un modelo de educación en Artes Liberales, que fomenta la investigación, creatividad, emprendimiento, desarrollo científico, tecnológico y cultural para el Ecuador y América Latina; reconocida por la calidad y liderazgo.
+  - nombre: Yachay EP
+    descripcion: Empresa pública que busca ser referente en el desarrollo y gestión de una ciudad del conocimiento con prioridad en la investigación, innovación y producción de conocimiento.

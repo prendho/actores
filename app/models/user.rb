@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
 
 # relationships
   belongs_to :actor
+  has_many :respuestas
 
 # methods
   def to_s

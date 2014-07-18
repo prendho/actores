@@ -8,6 +8,8 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
 #   inflect.singular /^(ox)en/i, '\1'
   inflect.irregular "actor", "actores"
   inflect.irregular "pregunta", "preguntas"
+  inflect.irregular "respuesta", "respuestas"
+  inflect.irregular "respuesta_pregunta", "respuesta_preguntas"
   inflect.irregular "grupo_preguntas", "grupos_preguntas"
 #   inflect.uncountable %w( fish sheep )
 end
