@@ -1,9 +1,9 @@
 # encoding: utf-8
 class UserInvitationMailer < ActionMailer::Base
-  default from: "noreply@example.com"
+  default from: "bot <noreply@example.com>"
 
   def invite(user)
     @user = user
-    mail(subject: "Invitación", to: @user.email)
+    mail(subject: "Invitación", to: "#{@user.nombres} <#{@user.email}>")
   end
 end

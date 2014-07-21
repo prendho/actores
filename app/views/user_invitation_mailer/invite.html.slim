@@ -1,6 +1,6 @@
-= link rel="stylesheet" href="bootstrap.css"
+link rel="stylesheet" href="bootstrap.min.css"
 
 p Hola,
 p
   | Has recibido una invitación para crear una cuenta en
-  = ENV["APP_URL"]
+  =< Rails.application.secrets[:app_domain]
