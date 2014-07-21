@@ -1,0 +1,4 @@
+h3 = "#{@user.new_record? ? "Nuevo" : "Editar"} perfil"
+
+= simple_form_for @user do |f|
+  = render "users/fields", f: f

@@ -2,7 +2,7 @@
 class InvitationsController < ApplicationController
   before_action :is_logged_in?
   before_action :find_user
-  before_action :expired?, only: [:show, :update]
+  before_action :expired?
 
   def show
   end
@@ -22,6 +22,7 @@ class InvitationsController < ApplicationController
 
   def expired?
     unless @user.valid_invitation?
+      @user.update!(will_invite: true)
       render :expired and return false
     end
   end
