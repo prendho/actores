@@ -6,10 +6,6 @@ class MeController < ApplicationController
   end
 
   def update
-    if params[:user][:password] != params[:user][:password_confirmation]
-      flash[:error] = "Las contraseñas no coinciden"
-      render :index and return
-    end
     if @user.update(user_params)
       redirect_to action: :index
     else
@@ -20,7 +16,7 @@ class MeController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:nombres, :email, :actor_id, :password)
+    params.require(:user).permit(:nombres, :email, :actor_id, :password, :password_confirmation)
   end
 
   def find_user

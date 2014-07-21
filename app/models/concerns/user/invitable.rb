@@ -10,6 +10,15 @@ class User < ActiveRecord::Base
       before_save :user_will_be_invited
     end
 
+    def valid_invitation?
+      Time.now < invitation_token_expires_at
+    end
+
+    def was_invited!
+      update! invitation_token: nil,
+              invitation_token_expires_at: nil
+    end
+
     private
 
     def user_will_be_invited

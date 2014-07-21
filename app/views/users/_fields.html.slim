@@ -1,0 +1,35 @@
+.row
+  .col-sm-3.text-right
+    = image_tag f.object.gravatar(300), class: "user-gravatar-big"
+    .help-block.small.text-center
+      | Imágenes de
+      a< href="http://gravatar.com" gravatar
+  .col-sm-9
+    .form-group
+      = f.input :nombres, input_html: { class: "form-control" }
+    .form-group
+      = f.input :email, input_html: { class: "form-control" }
+    .form-group
+      = f.label :actor_id, "Actor"
+      = f.select :actor_id, possible_actores, {include_blank: true}, class: "form-control chosen"
+
+    - if f.object.new_record?
+      .form-group
+        = f.check_box :will_invite
+        = f.label :will_invite, "Enviar invitación por correo electrónico"
+    .password-fields
+      .form-group
+        = f.input :password, input_html: {class: "form-control"}, label: "Contraseña"
+      .form-group
+        = f.input :password_confirmation, input_html: {class: "form-control"}, label: "Repetir contraseña"
+
+    - if !defined?(selfie)
+      .form-group
+        = f.check_box :admin
+        = f.label :admin, "Administrador"
+.actions
+  - if !defined?(selfie) && !f.object.new_record?
+    = link_to "Eliminar", user_path(f.object), class: "btn btn-link", method: :delete, data: { confirm: "Esta acción es irreversible" }
+  = f.submit "Enviar", class: "btn btn-primary", data: { disable_with: "Enviando" }
+
+= javascript_tag "window.helpers.usersFormHelper.init()"

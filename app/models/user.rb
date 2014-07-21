@@ -9,6 +9,13 @@ class User < ActiveRecord::Base
   belongs_to :actor
   has_many :respuestas
 
+  validates :email, uniqueness: true, presence: true
+  validate :validate_password_confirmation
+  validate :validate_password_presence
+
+  attr_accessor :password_confirmation
+  attr_accessor :require_password
+
 # methods
   def to_s
     nombres or email
@@ -25,5 +32,20 @@ class User < ActiveRecord::Base
   def gravatar(size=80)
     hash = Digest::MD5.hexdigest(email_or_rand)
     "http://www.gravatar.com/avatar/#{hash}?d=retro&s=#{size}"
+  end
+
+  private
+
+  def validate_password_confirmation
+    if password.present?
+      errors.add(:password_confirmation, "las contraseñas no coinciden") if password_confirmation != password
+    end
+  end
+
+  def validate_password_presence
+    if require_password
+      self.require_password = false
+      errors.add(:password, "no puede estar en blanco") if password.blank?
+    end
   end
 end

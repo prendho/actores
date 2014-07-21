@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :sessions, only: :create
-  resources :invitations, only: :show
+  resources :invitations, only: [:show, :update]
 
   get "me", to: "me#index", as: :me
   patch "me", to: "me#update"

@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
           redirect_back_or_to root_path, notice: "Hola, #{@user}"
         }
         format.js {
-          render text: "window.location.href='/';"
+          render text: "window.helpers.loginHelper.login();"
         }
       end
     else
