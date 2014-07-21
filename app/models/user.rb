@@ -1,6 +1,8 @@
 require 'digest/md5'
 
 class User < ActiveRecord::Base
+  include Invitable
+
   authenticates_with_sorcery!
 
 # relationships

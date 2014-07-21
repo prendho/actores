@@ -16,12 +16,18 @@ h3 = "#{@user.new_record? ? "Nuevo" : "Editar"} usuario"
       .form-group
         = f.label :actor_id, "Actor"
         = f.select :actor_id, possible_actores, {include_blank: true}, class: "form-control chosen"
-      - unless @user.new_record?
+
+      - if f.object.new_record?
         .form-group
-          = f.label :password, "Contraseña"
-          = f.password_field :password, class: "form-control"
+          = f.check_box :will_invite
+          = f.label :will_invite, "Crear contraseña automáticamente y enviar por correo"
+      .form-group.password-fields
+        = f.label :password, "Contraseña"
+        = f.password_field :password, class: "form-control"
       .form-group
         = f.check_box :admin
         = f.label :admin, "Administrador"
   .actions
     = f.submit "Enviar", class: "btn btn-primary", data: { disable_with: "Enviando" }
+
+= javascript_tag "window.helpers.usersFormHelper.init()"

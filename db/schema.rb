@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140718224602) do
+ActiveRecord::Schema.define(version: 20140719024631) do
 
   create_table "actores", force: true do |t|
     t.string   "nombre",     null: false
@@ -76,6 +76,8 @@ ActiveRecord::Schema.define(version: 20140718224602) do
     t.string   "nombres"
     t.boolean  "admin"
     t.integer  "actor_id"
+    t.string   "invitation_token"
+    t.datetime "invitation_token_expires_at"
   end
 
   add_index "users", ["actor_id"], name: "index_users_on_actor_id", using: :btree
