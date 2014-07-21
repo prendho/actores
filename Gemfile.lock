@@ -254,6 +254,7 @@ DEPENDENCIES
   mysql2
   nokogiri
   premailer-rails
+  pry
   rack-mini-profiler
   rails (= 4.1.0)
   rails_12factor

@@ -32,6 +32,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user = User.find params[:id]
+    @user.destroy
+    redirect_to action: :index
+  end
+
   private
 
   def require_admin
@@ -43,11 +49,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:nombres, :email, :password, :actor_id)
+    params.require(:user).permit(:nombres, :email, :password, :actor_id, :will_invite)
   end
-
-  def possible_actores
-    Actor.sorted.map { |a| [a.nombre, a.id]}
-  end
-  helper_method :possible_actores
 end

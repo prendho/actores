@@ -20,9 +20,9 @@ class User < ActiveRecord::Base
     end
 
     def generate_invitation_token!
-      self.invitation_token_expires_at = 1.week.from_now
+      self.invitation_token_expires_at = 1.month.from_now
       begin
-        self.invitation_token = SecureRandom.hex(10)
+        self.invitation_token = SecureRandom.hex(30)
       end while self.class.exists?(invitation_token: invitation_token)
     end
 

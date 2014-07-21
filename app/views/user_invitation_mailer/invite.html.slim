@@ -1,6 +1,19 @@
 link rel="stylesheet" href="bootstrap.min.css"
 
-p Hola,
 p
-  | Has recibido una invitación para crear una cuenta en
+  | Hola,
+  =< @user.nombres
+p
+  | Has recibido una invitación a
   =< Rails.application.secrets[:app_domain]
+
+p Puedes crear tu cuenta haciendo click en el siguiente enlace:
+p
+  = link_to invitation_url(id: @user.invitation_token), invitation_url(id: @user.invitation_token)
+
+p Esta invitación por correo es válida durante 1 mes y puedes solicitar una nueva invitación en cualquier momento.
+
+p.small
+  | Por favor no respondas a este mensaje. Este es un mensaje automatizado enviado a
+  =< @user.email
+  | . Puedes ignorar este mensaje si no sabes de qué se trata. Si tienes dudas, por favor escríbenos a afce@utpl.edu.ec

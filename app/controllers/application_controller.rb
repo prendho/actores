@@ -8,4 +8,11 @@ class ApplicationController < ActionController::Base
   protected
 
   def set_active_item; end
+
+  private
+
+  def possible_actores
+    Actor.sorted.map { |a| [a.nombre, a.id]}
+  end
+  helper_method :possible_actores
 end
