@@ -1,6 +1,6 @@
 # encoding: utf-8
 class UserInvitationMailer < ActionMailer::Base
-  default from: "bot <noreply@#{Rails.application.secrets[:smtp_domain]}>"
+  default from: "bot"
 
   def invite(user)
     @user = user
