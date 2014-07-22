@@ -8,7 +8,9 @@ class Respuesta < ActiveRecord::Base
   accepts_nested_attributes_for :respuesta_preguntas, reject_if: proc { |attributes| attributes["answer"].blank? }
 
   def build_for_grupo_preguntas!(grupo_preguntas)
-    grupo_preguntas.preguntas.includes(preguntas: :parent).each do |pregunta|
+    grupo_preguntas.preguntas
+      .includes(:pregunta_options).includes(preguntas: :parent)
+      .each do |pregunta|
       unless has_respuesta_pregunta_for?(pregunta)
         respuesta_preguntas << RespuestaPregunta.new(respuesta: self, pregunta: pregunta, answer: actor.answer_for(pregunta))
       end

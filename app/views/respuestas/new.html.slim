@@ -9,8 +9,6 @@ h1 = @actor
   = hidden_field_tag :grupo_preguntas_id, grupo_preguntas.id
   = hidden_field_tag :only_save
 
-  = f.hidden_field :id
-
   = f.fields_for :respuesta_preguntas, respuesta_preguntas do |r_f|
     = render "preguntas/pregunta_form", f: r_f
 
