@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :invitations, only: [:show, :update]
 
   resources :actores, only: [:index, :show] do
-    resources :respuestas, only: [:new, :create, :update]
+    resources :respuestas, only: [:new, :show, :edit, :create, :update]
   end
 
   get "me", to: "me#index", as: :me

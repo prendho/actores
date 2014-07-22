@@ -1,4 +1,5 @@
 - if @grupo_preguntas.preguntas.pluck(:id).include?(f.object.pregunta_id)
+  = f.hidden_field :id
   = f.hidden_field :pregunta_id
 
   .form-group class="#{'margin-left' if f.object.pregunta.is_child?}"

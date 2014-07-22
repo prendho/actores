@@ -1,16 +1,23 @@
 h1 = @actor
 
-= nested_form_for [@actor, @respuesta] do |f|
+= nested_form_for [@actor, respuesta] do |f|
 
   = render "respuestas/grupo_preguntas_nav"
 
-  h2 = @grupo_preguntas.number_and_title
+  h2 = grupo_preguntas.number_and_title
+
+  = hidden_field_tag :grupo_preguntas_id, grupo_preguntas.id
+  = hidden_field_tag :only_save
 
   = f.hidden_field :id
-  = hidden_field_tag :grupo_preguntas_id, @grupo_preguntas.id
 
-  = f.fields_for :respuesta_preguntas do |r_f|
+  = f.fields_for :respuesta_preguntas, respuesta_preguntas do |r_f|
     = render "preguntas/pregunta_form", f: r_f
 
   .actions
-    = f.submit "Enviar", class: "btn btn-primary", data: { disable_with: "Enviando" }
+    = f.submit submit_text.html_safe, class: "btn btn-primary", data: { disable_with: "Enviando" }
+
+  #form-not-saved.help-block.hidden
+    | El formulario aún no ha sido guardado.
+    =< link_to "Guardar ahora", "#", id: "save-now"
+  = javascript_tag "helpers.preguntasHelperForm.initialize();"
