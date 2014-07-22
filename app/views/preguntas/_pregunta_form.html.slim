@@ -4,4 +4,4 @@
   .form-group class="#{'margin-left' if f.object.pregunta.is_child?}"
     = f.label :answer, f.object.pregunta.number_and_title
     - unless f.object.pregunta.has_children?
-      = f.text_area :answer, class: "form-control"
+      = f.text_area :answer, class: "form-control autogrow"

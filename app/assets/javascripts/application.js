@@ -17,4 +17,5 @@
 //= require alertify.min
 //= require jquery.dataTables.min
 //= require chosen.jquery.min
+//= require jquery.autogrowtextarea.min
 //= require_tree .
