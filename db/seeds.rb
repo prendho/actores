@@ -20,7 +20,7 @@ puts "Added #{Pregunta.count} preguntas"
 
 if User.count == 0
   puts "Creating a@macool.me as admin"
-  user = User.create!(email: "a@macool.me", admin: true)
+  user = User.create!(email: "a@macool.me", admin: true, will_invite: true)
 else
   user = User.first
   puts "using #{user} to fill descripciones"
