@@ -11,7 +11,7 @@ preguntas:
         - title: Cantón
   - Información específica de la iniciativa:
     - title: ¿Qué recursos tecnológicos cuenta para llevar a cabo su iniciativa?
-    - title: Tipo de emprendimiento: social, dinámico, tradicional, etc
+    - title: "Tipo de emprendimiento: social, dinámico, tradicional, etc"
     - title: ¿A qué sector esta dirigida la iniciativa?
       kind: 1
       allow_other: true
@@ -114,7 +114,7 @@ preguntas:
       options:
         - Sí, se cuenta con una base de datos
         - Sí, pero los datos no están procesados
-        - No
+        - "No"
   - Relación con la estrategia 20-20 y el ecosistema:
     - title: ¿De que manera los objetivos de las iniciativas aportan a la Estrategia de Emprendimiento e Innovación?
     - title: La iniciativa, ¿a que dominio estratégico esta solucionando y de qué manera?

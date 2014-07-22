@@ -2,6 +2,6 @@
   = f.hidden_field :id
   = f.hidden_field :pregunta_id
 
-  .form-group class="#{'margin-left ' if f.object.pregunta.is_child?}#{'allow-other' if f.object.pregunta.allow_other}"
+  .form-group class="#{'margin-left' if f.object.pregunta.is_child?}"
     = f.label :answer, f.object.pregunta.number_and_title
     = render "preguntas/#{f.object.pregunta.kind}", f: f

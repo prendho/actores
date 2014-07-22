@@ -5,7 +5,9 @@ class Respuesta < ActiveRecord::Base
 
   scope :for_user, ->(user) { where(user: user) }
 
-  accepts_nested_attributes_for :respuesta_preguntas, reject_if: proc { |attributes| attributes["answer"].blank? }
+  accepts_nested_attributes_for :respuesta_preguntas, reject_if: proc { |attributes|
+    attributes["answer"].blank? && Pregunta.find(attributes["pregunta_id"]).kind != 2
+  }
 
   def build_for_grupo_preguntas!(grupo_preguntas)
     grupo_preguntas.preguntas
