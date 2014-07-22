@@ -1,6 +1,6 @@
 # encoding: utf-8
 class UserInvitationMailer < ActionMailer::Base
-  default from: "bot"
+  default from: "bot@aei.prendho.com"
 
   def invite(user)
     @user = user
