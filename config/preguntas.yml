@@ -11,6 +11,7 @@ preguntas:
         - title: Cantón
   - Información específica de la iniciativa:
     - title: ¿Qué recursos tecnológicos cuenta para llevar a cabo su iniciativa?
+    - title: Tipo de emprendimiento: social, dinámico, tradicional, etc
     - title: ¿A qué sector esta dirigida la iniciativa?
       kind: 1
       allow_other: true
