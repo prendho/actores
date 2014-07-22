@@ -5,7 +5,7 @@ preguntas:
     - title: Nombre de la iniciativa de apoyo a emprendedores e innovadores (programa, proyecto y servicio)
     - title: Descripción de la iniciativa (asesoría, mentoría, convocatorias, financiamiento, acceso a red de inversionistas, acceso a mercados, aceleración, etc)
     - title: Valor agregado que ofrece la iniciativa (característica diferenciadora)
-    - title: ¿En que provincia y cantón ejerce la iniciativa?
+    - title: ¿En qué provincia y cantón ejerce la iniciativa?
       children:
         - title: Provincia
         - title: Cantón

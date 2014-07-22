@@ -13,4 +13,4 @@ h1 = @actor
     = render "preguntas/pregunta_form", f: r_f
 
   .actions
-    = f.submit
+    = f.submit "Enviar", class: "btn btn-primary", data: { disable_with: "Enviando" }

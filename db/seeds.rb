@@ -10,8 +10,11 @@ end
 preguntas.each do |p|
   grupo_preguntas = GrupoPreguntas.create!(title: p.keys.first)
   p[p.keys.first].each do |attributes|
-    Pregunta.create!(attributes.merge(grupo_preguntas: grupo_preguntas))
+    grupo_preguntas.preguntas.create!(attributes)
   end
+end
+Pregunta.children.each do |pregunta|
+  pregunta.update! grupo_preguntas_id: pregunta.parent.grupo_preguntas_id
 end
 puts "Added #{Pregunta.count} preguntas"
 

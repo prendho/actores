@@ -2,11 +2,13 @@ class Pregunta < ActiveRecord::Base
   enum kind: [:write_answer, :option, :multiple_option]
 
   scope :roots, -> { where(parent_id: nil) }
+  scope :children, -> { where.not(parent_id: nil) }
 
   belongs_to :grupo_preguntas
   belongs_to :parent, class_name: Pregunta, foreign_key: :parent_id
   has_many :pregunta_options, dependent: :destroy
   has_many :respuesta_preguntas, dependent: :destroy
+  has_many :preguntas, class_name: Pregunta, foreign_key: :parent_id
 
   validates :title, presence: true
 
@@ -14,8 +16,16 @@ class Pregunta < ActiveRecord::Base
 
   def children=(children_attrs)
     children_attrs.each do |attrs|
-      Pregunta.create!(attrs.merge(parent: self))
+      Pregunta.create!(attrs.merge(parent: self, grupo_preguntas: grupo_preguntas))
     end
+  end
+
+  def has_children?
+    preguntas.length > 0
+  end
+
+  def is_child?
+    !parent_id.blank?
   end
 
   def options=(options_attrs)
@@ -33,7 +43,12 @@ class Pregunta < ActiveRecord::Base
   end
 
   def number
-    grupo_preguntas.preguntas.pluck(:id).index(id) + 1
+    if parent_id.blank?
+      grupo_preguntas.preguntas.roots.pluck(:id).index(id) + 1
+    else
+      child_number = parent.preguntas.pluck(:id).index(id) + 1
+      "#{parent.number}.#{child_number}"
+    end
   end
 
   private
