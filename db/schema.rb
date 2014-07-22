@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140721020846) do
+ActiveRecord::Schema.define(version: 20140721230624) do
 
   create_table "actores", force: true do |t|
     t.string   "nombre",     null: false
@@ -40,10 +40,11 @@ ActiveRecord::Schema.define(version: 20140721020846) do
     t.integer "other_pregunta_option_id"
     t.integer "grupo_preguntas_id"
     t.integer "kind",                     default: 0
-    t.string  "children_ids"
+    t.integer "parent_id"
   end
 
   add_index "preguntas", ["grupo_preguntas_id"], name: "index_preguntas_on_grupo_preguntas_id", using: :btree
+  add_index "preguntas", ["parent_id"], name: "index_preguntas_on_parent_id", using: :btree
 
   create_table "respuesta_preguntas", force: true do |t|
     t.integer "pregunta_id"

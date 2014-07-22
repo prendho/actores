@@ -1,0 +1,16 @@
+h1 = @actor
+
+= nested_form_for [@actor, @respuesta] do |f|
+
+  = render "respuestas/grupo_preguntas_nav"
+
+  h2 = @grupo_preguntas.number_and_title
+
+  = f.hidden_field :id
+  = hidden_field_tag :grupo_preguntas_id, @grupo_preguntas.id
+
+  = f.fields_for :respuesta_preguntas do |r_f|
+    = render "preguntas/pregunta_form", f: r_f
+
+  .actions
+    = f.submit

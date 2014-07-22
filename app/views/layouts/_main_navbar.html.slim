@@ -4,6 +4,7 @@ nav.navbar.navbar-default
   .navbar-collapse
     ul.nav.navbar-nav
       - for_admin do
+        = navbar_item "Actores", actores_path
         = navbar_item "Usuarios", users_path
     ul.nav.navbar-nav.navbar-right
       li.dropdown

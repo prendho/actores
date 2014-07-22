@@ -1,0 +1,6 @@
+- if @grupo_preguntas.preguntas.pluck(:id).include?(f.object.pregunta_id)
+  = f.hidden_field :pregunta_id
+
+  .form-group
+    = f.label :answer, f.object.pregunta.number_and_title
+    = f.text_field :answer, class: "form-control"

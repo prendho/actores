@@ -1,0 +1,9 @@
+.grupo-preguntas-nav
+  - grupos_preguntas = GrupoPreguntas.all
+  - grupos_preguntas.each_with_index do |grupo_preguntas, index|
+    - if grupo_preguntas == @grupo_preguntas
+      span.active = grupo_preguntas
+    - else
+      span = link_to grupo_preguntas, new_actor_respuesta_path(@actor, grupo_preguntas_id: grupo_preguntas.id)
+    - unless (index+1) == grupos_preguntas.size
+      .divider &raquo;

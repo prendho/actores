@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   resources :sessions, only: :create
   resources :invitations, only: [:show, :update]
 
+  resources :actores, only: [:index, :show] do
+    resources :respuestas, only: [:new, :create, :update]
+  end
+
   get "me", to: "me#index", as: :me
   patch "me", to: "me#update"
 

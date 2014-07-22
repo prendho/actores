@@ -45,6 +45,7 @@ gem "sorcery"
 gem "sucker_punch"
 gem "nokogiri"
 gem "premailer-rails"
+gem "nested_form"
 
 group :test, :development do
   gem "rspec-rails"
