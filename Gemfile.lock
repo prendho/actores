@@ -125,6 +125,7 @@ GEM
     multipart-post (2.0.0)
     mysql2 (0.3.16)
     nested_form (0.3.2)
+    newrelic_rpm (3.9.0.229)
     nokogiri (1.6.2.1)
       mini_portile (= 0.6.0)
     oauth (0.4.7)
@@ -268,6 +269,7 @@ DEPENDENCIES
   meta_request
   mysql2
   nested_form
+  newrelic_rpm
   nokogiri
   premailer-rails
   pry
