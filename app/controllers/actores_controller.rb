@@ -2,7 +2,11 @@ class ActoresController < ApplicationController
   before_action :require_login
 
   def index
-    @actores = Actor.sorted
+    @actores = if params[:search].present?
+      Actor.like(params[:search]).sorted
+    else
+      Actor.sorted
+    end
   end
 
   def show
