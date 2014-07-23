@@ -46,6 +46,7 @@ gem "sucker_punch"
 gem "nokogiri"
 gem "premailer-rails"
 gem "nested_form"
+gem "sentry-raven", git: "https://github.com/getsentry/raven-ruby.git"
 
 group :test, :development do
   gem "rspec-rails"
