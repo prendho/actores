@@ -1,3 +1,3 @@
 ul
-  - @actor.answer_for(pregunta).split(",").each do |answer|
+  - @actor.answer_for(pregunta).to_s.split(",").each do |answer|
     li = answer
