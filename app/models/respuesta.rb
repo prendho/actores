@@ -5,9 +5,11 @@ class Respuesta < ActiveRecord::Base
 
   scope :for_user, ->(user) { where(user: user) }
 
-  accepts_nested_attributes_for :respuesta_preguntas, reject_if: proc { |attributes|
-    attributes["answer"].blank? && Pregunta.find(attributes["pregunta_id"]).kind != "multiple_option"
-  }
+  accepts_nested_attributes_for :respuesta_preguntas, reject_if: :reject_respuesta_pregunta?
+
+  def answer_for(pregunta)
+    respuesta_preguntas.where(pregunta_id: pregunta.id).first.try :answer
+  end
 
   def build_for_grupo_preguntas!(grupo_preguntas)
     grupo_preguntas.preguntas
@@ -19,9 +21,20 @@ class Respuesta < ActiveRecord::Base
     end
   end
 
+  private
+
   def has_respuesta_pregunta_for?(pregunta)
     respuesta_preguntas.any? do |respuesta_preguntas|
       respuesta_preguntas.pregunta_id == pregunta.id
+    end
+  end
+
+  def reject_respuesta_pregunta?(attributes)
+    pregunta = Pregunta.find(attributes["pregunta_id"])
+    if attributes["answer"].blank?
+      pregunta.kind != "multiple_option"
+    else
+      actor.answer_for(pregunta).to_s == attributes["answer"]
     end
   end
 end

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   resources :actores, only: [:index, :show] do
     resources :respuestas, only: [:new, :show, :edit, :create, :update]
+    resources :preguntas, only: :show
   end
 
   get "me", to: "me#index", as: :me

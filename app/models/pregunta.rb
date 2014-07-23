@@ -6,9 +6,10 @@ class Pregunta < ActiveRecord::Base
 
   belongs_to :grupo_preguntas
   belongs_to :parent, class_name: Pregunta, foreign_key: :parent_id
+  has_many :preguntas, class_name: Pregunta, foreign_key: :parent_id
   has_many :pregunta_options, dependent: :destroy
   has_many :respuesta_preguntas, dependent: :destroy
-  has_many :preguntas, class_name: Pregunta, foreign_key: :parent_id
+  has_many :respuestas, through: :respuesta_preguntas
 
   validates :title, presence: true
 
@@ -49,6 +50,14 @@ class Pregunta < ActiveRecord::Base
       child_number = parent.preguntas.pluck(:id).index(id) + 1
       "#{parent.number}.#{child_number}"
     end
+  end
+
+  def answerers_for(actor)
+    User.where id: answers_for(actor).pluck(:user_id)
+  end
+
+  def answers_for(actor)
+    respuestas.where(actor_id: actor.id)
   end
 
   private

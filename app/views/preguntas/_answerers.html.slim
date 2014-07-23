@@ -1,0 +1,5 @@
+- pregunta.answerers_for(@actor).each do |user|
+  = image_tag user.gravatar, class: "user-gravatar-really-tiny ttip", title: user, data: { placement: "bottom" }
+
+- if pregunta.answers_for(@actor).any?
+  = link_to "", actor_pregunta_path(@actor, pregunta), class: "glyphicon glyphicon-list-alt ttip", title: "historial", data: { placement: "bottom" }

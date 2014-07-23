@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
 
   def set_active_item; end
 
+  def require_admin
+    redirect_to(root_path) unless current_user.admin?
+  end
+
   private
 
   def possible_actores

@@ -1,0 +1,23 @@
+h2 = @actor
+
+h3 = link_to grupo_preguntas.number_and_title, actor_path(@actor, preguntas: grupo_preguntas.id)
+h3 = @pregunta.number_and_title
+
+h4 Historial
+
+table.datatables.pregunta-historial-table
+  thead
+    tr
+      th Fecha
+      th Usuario
+      th Respuesta
+  tbody
+    - @pregunta.answers_for(@actor).includes(:user).each do |respuesta|
+      tr
+        td = l respuesta.updated_at, format: :short
+        td
+          - if respuesta.user
+            = link_to respuesta.user, respuesta.user
+          - else
+            | Usuario eliminado
+        td = respuesta.answer_for(@pregunta)
