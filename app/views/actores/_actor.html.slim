@@ -1,2 +1,4 @@
-.actor
-  = link_to actor, actor
+= link_to actor, class: "actor" do
+  .image = image_tag actor.logo_url
+  .nombre = actor
+  .acronimo = actor.acronimo

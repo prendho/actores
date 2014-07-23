@@ -4,7 +4,7 @@ tr.user
       = image_tag user.gravatar, class: "user-gravatar-tiny"
       = user.nombres
   td = link_to user.email, "mailto:#{user.email}"
-  td = user.actor
+  td = link_to(user.actor, user.actor) if user.actor
   td
     - if user.admin?
       span.label.label-default admin

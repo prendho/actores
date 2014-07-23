@@ -13,6 +13,14 @@ class Actor < ActiveRecord::Base
     nombre
   end
 
+  def logo_url
+    "/images/actores/#{slug}.png"
+  end
+
+  def slug
+    acronimo.try(:parameterize) or nombre.parameterize
+  end
+
   def answer_for(pregunta)
     respuesta_preguntas.where(pregunta: pregunta).last.try :answer
   end

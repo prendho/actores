@@ -4,7 +4,7 @@
     = render "users/gravatar_image"
   .col-sm-9
     h1 = @user.nombres
-    h2 = @user.actor
+    h2 = link_to(@user.actor, @user.actor) if @user.actor
     h3 = link_to @user.email, "mailto:#{@user.email}"
 
 - path = if current_user.admin? then edit_user_path(@user) elsif current_user == @user then me_path end
