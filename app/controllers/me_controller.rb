@@ -7,7 +7,7 @@ class MeController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to action: :index
+      redirect_to root_path, notice: "Tu perfil fue actualizado"
     else
       render :index
     end

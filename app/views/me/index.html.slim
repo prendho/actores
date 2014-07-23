@@ -1,1 +1,4 @@
-= render "users/form", selfie: true
+h3 Editar perfil
+
+= simple_form_for @user, url: me_path do |f|
+  = render "users/fields", f: f, selfie: true
