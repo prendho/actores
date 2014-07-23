@@ -13,9 +13,10 @@ h1 = @actor
     = render "preguntas/pregunta_form", f: r_f
 
   .actions
+    = link_to "Cancelar", actor_path(@actor), class: "btn btn-link"
     = f.submit submit_text.html_safe, class: "btn btn-primary", data: { disable_with: "Enviando" }
 
-  #form-not-saved.help-block.hidden
+  #form-not-saved.text-danger.hidden
     | El formulario aún no ha sido guardado.
     =< link_to "Guardar ahora", "#", id: "save-now"
   = javascript_tag "helpers.preguntasHelperForm.initialize();"

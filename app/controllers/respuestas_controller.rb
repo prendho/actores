@@ -15,6 +15,8 @@ class RespuestasController < ApplicationController
   def create
     if respuesta.update(respuesta_params)
       build_respuestas!
+    else
+      grupo_preguntas
     end
     if @grupo_preguntas
       render :new
@@ -36,9 +38,18 @@ class RespuestasController < ApplicationController
   helper_method :respuesta
 
   def respuesta_preguntas
-    @respuesta.respuesta_preguntas.to_a.sort_by(&:pregunta_id)
+    @respuesta_preguntas ||= @respuesta.respuesta_preguntas
+      .to_a
+      .sort_by(&:pregunta_id)
+      .reject { |respuesta_pregunta|
+        !grupo_preguntas_pregunta_ids.include?(respuesta_pregunta.pregunta_id)
+      }
   end
   helper_method :respuesta_preguntas
+
+  def grupo_preguntas_pregunta_ids
+    @grupo_preguntas_pregunta_ids ||= grupo_preguntas.preguntas.pluck(:id)
+  end
 
   def submit_text
     next_grupo = grupo_preguntas.next

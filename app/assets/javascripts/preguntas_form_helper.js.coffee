@@ -8,11 +8,15 @@ helpers.preguntasHelperForm =
   formNotSaved: ->
     $("#form-not-saved").removeClass "hidden"
 
+  formSubmitted: ->
+    $("#form-not-saved").addClass "hidden"
+
   initialize: ->
     allowOtherRespuestaHelper.initialize()
     checkboxesRespuestaHelper.initialize()
     $("#save-now").on "click", @saveNow
     $("form input, form textarea").on "change", @formNotSaved
+    $("form").on "submit", @formSubmitted
 
 allowOtherRespuestaHelper =
   optionChanged: (e) ->
@@ -30,10 +34,12 @@ allowOtherRespuestaHelper =
     for radio in $(".allow-other input[type=radio]:checked")
       $radio = $(radio)
       $radio.trigger("change") unless $radio.hasClass("other-option")
+    false
 
 checkboxesRespuestaHelper =
   labelClicked: (e) ->
-    $checkbox = $(e.target).parent().find("input[type=checkbox]")
+    value = e.target.textContent
+    $checkbox = $("input[type=checkbox][value='#{value}']")
     if $checkbox.is(":checked")
       $checkbox[0].checked = false
     else
@@ -53,9 +59,11 @@ checkboxesRespuestaHelper =
       $input = $(input)
       values = $input.val().split(",")
       for value in values
-        $checkbox = $input.parent().find("input[type=checkbox][value='#{value}']")
-        $checkbox[0].checked = true
-        $checkbox.trigger "change"
+        if !!value
+          $checkbox = $("input[type=checkbox][value='#{value}']")
+          $checkbox[0].checked = true
+          $checkbox.trigger "change"
+    false
 
   initialize: ->
     @select()
