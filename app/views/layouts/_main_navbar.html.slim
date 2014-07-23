@@ -1,10 +1,10 @@
 nav.navbar.navbar-default
   .navbar-header
-  = link_to "AEI", "#", class: "navbar-brand"
+  = link_to "AEI", root_path, class: "navbar-brand"
   .navbar-collapse
     ul.nav.navbar-nav
+      = navbar_item "Actores", actores_path
       - for_admin do
-        = navbar_item "Actores", actores_path
         = navbar_item "Usuarios", users_path
     ul.nav.navbar-nav.navbar-right
       li.dropdown
