@@ -1,4 +1,12 @@
 h2 = @actor
+
+= render "respuestas/grupo_preguntas_nav", show: true
+
 .pull-right
-  = link_to "", new_actor_respuesta_path(@actor), class: "glyphicon glyphicon-edit"
-p aquí las preguntas
+  = link_to "", new_actor_respuesta_path(@actor), class: "glyphicon glyphicon-edit btn btn-default"
+
+h3 = grupo_preguntas.number_and_title
+
+.show-preguntas
+  - grupo_preguntas.preguntas.each do |pregunta|
+    = render pregunta

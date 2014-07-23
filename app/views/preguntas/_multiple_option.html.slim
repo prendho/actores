@@ -1,7 +1,3 @@
-.multiple-option
-  - f.object.pregunta.pregunta_options.each do |option|
-    .pregunta-option
-      = f.check_box :answer, {}, option.to_s
-      = f.label :answer, option, value: option
-
-  = f.hidden_field :answer, class: "multiple-option-hidden"
+ul
+  - @actor.answer_for(pregunta).split(",").each do |answer|
+    li = answer

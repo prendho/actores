@@ -1,0 +1,3 @@
+div class="#{'margin-left' if pregunta.is_child?}"
+  .pregunta = pregunta.number_and_title
+  .answer = render "preguntas/#{pregunta.kind}", pregunta: pregunta

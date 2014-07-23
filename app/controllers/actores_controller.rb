@@ -11,6 +11,15 @@ class ActoresController < ApplicationController
 
   private
 
+  def grupo_preguntas
+    @grupo_preguntas ||= if params[:preguntas].present?
+      GrupoPreguntas.find(params[:preguntas])
+    else
+      GrupoPreguntas.first
+    end
+  end
+  helper_method :grupo_preguntas
+
   def set_active_item
     @active_item = :actores
   end

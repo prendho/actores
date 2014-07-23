@@ -1,8 +1,1 @@
-div class="#{'allow-other' if f.object.pregunta.allow_other}"
-  - f.object.pregunta.pregunta_options.each do |option|
-    .pregunta-option
-      = f.radio_button :answer, option, class: "#{'other-option' if option.other?}", checked: f.object.answered?(option)
-      = f.label :answer, option, value: option
-
-      - if f.object.pregunta.allow_other && option.other?
-        .textarea-wrapper = f.text_area :answer, class: "form-control autogrow"
+= render "preguntas/write_answer", pregunta: pregunta
