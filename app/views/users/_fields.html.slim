@@ -1,9 +1,7 @@
 .row
   .col-sm-3.text-right
     = image_tag f.object.gravatar(300), class: "user-gravatar-big"
-    .help-block.small.text-center
-      | Imágenes de
-      a< href="http://gravatar.com" gravatar
+    = render "users/gravatar_image"
   .col-sm-9
     .form-group
       = f.input :nombres, input_html: { class: "form-control" }

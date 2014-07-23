@@ -1,7 +1,8 @@
 tr.user
   td
-    = image_tag user.gravatar, class: "user-gravatar-tiny"
-    = user.nombres
+    = link_to user_path(user) do
+      = image_tag user.gravatar, class: "user-gravatar-tiny"
+      = user.nombres
   td = link_to user.email, "mailto:#{user.email}"
   td = user.actor
   td
