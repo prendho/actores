@@ -1,5 +1,7 @@
 .pull-right = render "search"
 
-h3.actores-count = pluralize @actores.count, "actor", "actores"
+h3
+  .actores-count = pluralize @actores.count, "actor", "actores"
+  #spinner-loading
 
 .actores-list = render @actores

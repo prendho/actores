@@ -1,2 +1,2 @@
-= form_tag actores_path, method: :get, remote: true do
-  = search_field_tag :search, params[:search], class: "form-control search-actores", placeholder: "Buscar"
+= form_tag actores_path, class: "search-actores", method: :get, remote: true do
+  = search_field_tag :search, params[:search], class: "form-control", placeholder: "Buscar"

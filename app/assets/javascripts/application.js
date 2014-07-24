@@ -18,4 +18,5 @@
 //= require jquery.dataTables.min
 //= require chosen.jquery.min
 //= require jquery.autogrowtextarea.min
+//= require spin.min
 //= require_tree .
