@@ -48,6 +48,8 @@ gem "premailer-rails"
 gem "nested_form"
 gem "sentry-raven", git: "https://github.com/getsentry/raven-ruby.git"
 gem "newrelic_rpm"
+gem "carrierwave"
+gem "cloudinary"
 
 group :test, :development do
   gem "rspec-rails"

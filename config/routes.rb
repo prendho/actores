@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :sessions, only: :create
   resources :invitations, only: [:show, :update]
 
-  resources :actores, only: [:index, :show] do
+  resources :actores, only: [:index, :show, :edit, :update] do
     resources :respuestas, only: [:new, :show, :edit, :create, :update]
     resources :preguntas, only: :show
   end

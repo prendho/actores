@@ -1,5 +1,7 @@
 class ActoresController < ApplicationController
   before_action :require_login
+  before_action :require_admin, only: [:edit, :update]
+  before_action :find_actor, only: [:show, :edit, :update]
 
   def index
     @actores = if params[:search].present?
@@ -10,10 +12,28 @@ class ActoresController < ApplicationController
   end
 
   def show
-    @actor = Actor.find params[:id]
+  end
+
+  def edit
+  end
+
+  def update
+    if @actor.update(actor_params)
+      redirect_to actores_path, notice: "#{@actor} actualizado"
+    else
+      render :edit
+    end
   end
 
   private
+
+  def find_actor
+    @actor = Actor.find params[:id]
+  end
+
+  def actor_params
+    params.require(:actor).permit :logo, :logo_cache, :remove_logo, :nombre, :acronimo
+  end
 
   def grupo_preguntas
     @grupo_preguntas ||= if params[:preguntas].present?

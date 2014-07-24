@@ -11,17 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140721230624) do
+ActiveRecord::Schema.define(version: 20140724162128) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "actores", force: true do |t|
-    t.string   "nombre",     null: false
+    t.string   "nombre",           null: false
     t.string   "acronimo"
     t.string   "logo"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "default_logo_url"
   end
 
   add_index "actores", ["nombre"], name: "index_actores_on_nombre", using: :btree

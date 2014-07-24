@@ -10,12 +10,14 @@ class Actor < ActiveRecord::Base
 # validations
   validates :nombre, presence: true, uniqueness: true
 
+  mount_uploader :logo, ActorLogoUploader
+
   def to_s
     nombre
   end
 
-  def logo_url
-    "/images/actores/#{slug}.png"
+  def logo_image_url
+    logo_url(:small) or default_logo_url
   end
 
   def slug

@@ -2,6 +2,10 @@
   .spinner
     position: relative
 
+.actor-image
+  max-width: 80px
+  max-height: 80px
+
 .actores-list
   .actor
     margin: 0.5em 0
@@ -9,20 +13,22 @@
     height: 90px
     position: relative
     border-bottom: 1px solid #eee
-    .nombre
+    a
       display: block
-      top: 10px
-      font-size: 22px
+    .edit-actor
+      position: absolute
+      right: 10px
+      top: 30px
+      z-index: 10
+    .info
       position: absolute
       left: 100px
-    .acronimo
-      position: absolute
-      left: 100px
-      top: 40px
+      top: 0
+      .nombre
+        display: block
+        font-size: 22px
+      .acronimo
     .image
       text-align: center
       display: inline-block
       width: 100px
-      img
-        max-width: 80px
-        max-height: 80px
