@@ -1,0 +1,16 @@
+h2.text-center Recuperar cuenta
+
+.reset-password
+  p Por favor escoge una nueva contraseña
+
+  = simple_form_for @user, url: password_reset_path(@user), html: { method: :put } do |f|
+    = hidden_field_tag :token, @token
+
+    .form-group
+      = f.input :email, input_html: { class: "form-control", disabled: true }
+    .form-group
+      = f.input :password, label: "Nueva contraseña", input_html: { class: "form-control" }
+    .form-group
+      = f.input :password_confirmation, label: "Repetir nueva contraseña", input_html: { class: "form-control" }
+    .actions
+      = f.submit "Actualizar mi contraseña", class: "btn btn-primary", data: { disable_with: "Actualizando" }

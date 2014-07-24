@@ -1,0 +1,10 @@
+h2.text-center Recuperar cuenta
+
+.reset-password
+  p Ingresa tu dirección de correo electrónico. Te enviaremos un correo indicando cómo recuperar el acceso a tu cuenta
+
+  = form_tag password_resets_path do
+    .form-group
+      = email_field_tag :email, params[:email], placeholder: "alguien@email.com", class: "form-control"
+    .actions
+      = submit_tag "Recuperar", class: "btn btn-lg btn-primary", data: { disable_with: "Recuperando" }

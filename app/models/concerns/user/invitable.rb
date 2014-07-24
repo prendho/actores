@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
     end
 
     def send_invitation_email!
-      UserInvitationMailerJob.new.async.perform(self)
+      UsersJob.new.async.invite(self)
     end
   end
 end

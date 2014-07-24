@@ -13,6 +13,10 @@ class ApplicationController < ActionController::Base
     redirect_to(root_path) unless current_user.admin?
   end
 
+  def redirect_if_logged_in
+    redirect_to root_path, notice: "Ya has iniciado sesión" if current_user
+  end
+
   private
 
   def possible_actores

@@ -1,6 +1,6 @@
 # encoding: utf-8
 class InvitationsController < ApplicationController
-  before_action :is_logged_in?
+  before_action :redirect_if_logged_in
   before_action :find_user
   before_action :expired?
 
@@ -33,9 +33,5 @@ class InvitationsController < ApplicationController
 
   def user_params
     params.require(:user).permit(:nombres, :email, :actor_id, :password, :password_confirmation)
-  end
-
-  def is_logged_in?
-    redirect_to root_path, notice: "Ya has iniciado sesión" if current_user
   end
 end

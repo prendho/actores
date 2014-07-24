@@ -34,6 +34,10 @@ class User < ActiveRecord::Base
     "http://www.gravatar.com/avatar/#{hash}?d=retro&s=#{size}"
   end
 
+  def async_deliver_reset_password_instructions!
+    UsersJob.new.async.deliver_reset_password_instructions!(self)
+  end
+
   private
 
   def validate_password_confirmation

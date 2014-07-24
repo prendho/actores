@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root "home#index"
 
   resources :users
+  resources :password_resets
   resources :sessions, only: :create
   resources :invitations, only: [:show, :update]
 

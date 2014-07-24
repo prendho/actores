@@ -11,3 +11,5 @@ p Escribe tu dirección de correo y contraseña
   = label_tag :remember_me, "No cerrar sesión"
   .actions
     = submit_tag "Iniciar sesión", class: "btn btn-primary", data: { disable_with: "Enviando.." }
+
+.small = link_to "No puedo ingresar - Olvidé mi contraseña", password_resets_path
