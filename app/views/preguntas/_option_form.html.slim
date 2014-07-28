@@ -6,3 +6,6 @@ div class="#{'allow-other' if f.object.pregunta.allow_other}"
 
       - if f.object.pregunta.allow_other && option.other?
         .textarea-wrapper = f.text_area :answer, class: "form-control autogrow"
+
+  - unless f.object.pregunta.allow_other
+    = f.hidden_field :answer, class: "option-hidden"

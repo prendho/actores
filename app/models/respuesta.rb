@@ -32,7 +32,7 @@ class Respuesta < ActiveRecord::Base
   def reject_respuesta_pregunta?(attributes)
     pregunta = Pregunta.find(attributes["pregunta_id"])
     if attributes["answer"].blank?
-      pregunta.kind != "multiple_option"
+      pregunta.kind == "write_answer"
     else
       actor.answer_for(pregunta).to_s == attributes["answer"]
     end

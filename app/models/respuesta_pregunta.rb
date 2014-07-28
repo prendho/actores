@@ -15,6 +15,6 @@ class RespuestaPregunta < ActiveRecord::Base
   private
 
   def allow_blank_if_multiple_option
-    errors.add(:answer, "no puede estar en blanco") if answer.blank? && pregunta.kind != "multiple_option"
+    errors.add(:answer, "no puede estar en blanco") if answer.blank? && pregunta.kind == "multiple_option"
   end
 end
