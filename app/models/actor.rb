@@ -1,6 +1,6 @@
 class Actor < ActiveRecord::Base
   scope :sorted, -> { order(:nombre) }
-  scope :like, ->(query) { where("nombre LIKE :query OR acronimo LIKE :query", query: "%#{query}%") }
+  scope :like, ->(query) { where("nombre ILIKE :query OR acronimo ILIKE :query", query: "%#{query}%") }
 
 # relationships
   has_many :users
