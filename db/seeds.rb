@@ -47,3 +47,8 @@ actores.each do |attributes|
 end
 puts "Added #{Actor.count} actores"
 puts "Added #{Respuesta.count} respuestas"
+
+# set default logo_url for actores that don't have it
+Actor.where(default_logo_url: nil).find_each do |actor|
+  actor.update! default_logo_url: "/images/actores/#{actor.slug}.png"
+end
