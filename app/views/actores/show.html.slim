@@ -8,5 +8,5 @@ h2 = @actor
 h3 = grupo_preguntas.number_and_title
 
 .show-preguntas
-  - grupo_preguntas.preguntas.each do |pregunta|
+  - grupo_preguntas.preguntas.to_a.sort_by(&:id).each do |pregunta|
     = render pregunta
