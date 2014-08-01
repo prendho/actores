@@ -16,7 +16,7 @@ class Respuesta < ActiveRecord::Base
       .includes(:pregunta_options).includes(preguntas: :parent)
       .each do |pregunta|
       unless has_respuesta_pregunta_for?(pregunta)
-        respuesta_preguntas << RespuestaPregunta.new(respuesta: self, pregunta: pregunta, answer: actor.answer_for(pregunta))
+        respuesta_preguntas.build(pregunta: pregunta, answer: actor.answer_for(pregunta))
       end
     end
   end
@@ -30,11 +30,12 @@ class Respuesta < ActiveRecord::Base
   end
 
   def reject_respuesta_pregunta?(attributes)
+    # we may need to refactor this
     pregunta = Pregunta.find(attributes["pregunta_id"])
     if attributes["answer"].blank?
-      pregunta.kind == "write_answer"
+      pregunta.write_answer? || attributes["answer"].to_s == actor.answer_for(pregunta).to_s
     else
-      actor.answer_for(pregunta).to_s == attributes["answer"]
+      attributes["answer"] == actor.answer_for(pregunta).to_s
     end
   end
 end
