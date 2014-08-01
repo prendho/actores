@@ -5,6 +5,11 @@
       => link_to(activity.owner, activity.owner)
     - else
       span.small.text-muted> Un usuario que ha sido eliminado
+
     = render_activity activity
+
+    span.small.text-muted.time-ago
+      '  hace
+      = time_ago_in_words activity.created_at
 
 .text-center = paginate @activities
