@@ -72,6 +72,7 @@ class RespuestasController < ApplicationController
   def grupo_preguntas
     @grupo_preguntas ||= if params[:grupo_preguntas_id].present?
       if only_save?
+        flash.now[:notice] = "El formulario ha sido guardado"
         GrupoPreguntas.find(params[:grupo_preguntas_id])
       else
         GrupoPreguntas.next_of(params[:grupo_preguntas_id])
