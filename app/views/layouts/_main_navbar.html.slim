@@ -6,6 +6,7 @@ nav.navbar.navbar-default
       = navbar_item "Actores", actores_path
       - for_admin do
         = navbar_item "Usuarios", users_path
+        = navbar_item "Actividad", activity_path
     ul.nav.navbar-nav.navbar-right
       li.dropdown
         = link_to "#", class: "dropdown-toggle", data: { toggle: "dropdown" } do

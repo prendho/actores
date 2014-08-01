@@ -1,4 +1,6 @@
 class Actor < ActiveRecord::Base
+  include PublicActivity::Common
+
   scope :sorted, -> { order(:nombre) }
   scope :like, ->(query) { where("nombre ILIKE :query OR acronimo ILIKE :query", query: "%#{query}%") }
 

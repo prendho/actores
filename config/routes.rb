@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root "home#index"
 
+  get :activity, to: "activity#index", as: :activity
+
   resources :users
   resources :password_resets
   resources :sessions, only: :create

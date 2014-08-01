@@ -1,0 +1,10 @@
+- @activities.each do |activity|
+  .activity
+    - if activity.owner
+      => image_tag activity.owner.gravatar, class: "user-gravatar-tiny"
+      => link_to(activity.owner, activity.owner)
+    - else
+      span.small.text-muted> Un usuario que ha sido eliminado
+    = render_activity activity
+
+.text-center = paginate @activities

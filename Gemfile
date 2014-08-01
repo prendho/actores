@@ -52,6 +52,7 @@ gem "sentry-raven", git: "https://github.com/getsentry/raven-ruby.git"
 gem "newrelic_rpm"
 gem "carrierwave"
 gem "cloudinary"
+gem "public_activity"
 
 group :test, :development do
   gem "rspec-rails"

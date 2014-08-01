@@ -14,7 +14,9 @@ class RespuestasController < ApplicationController
 
   def create
     if respuesta.update(respuesta_params)
+      flash.now[:notice] = "El formulario ha sido guardado" if only_save?
       build_respuestas!
+      track_activity!
     else
       grupo_preguntas
     end
@@ -27,6 +29,15 @@ class RespuestasController < ApplicationController
   alias_method :update, :create
 
   private
+
+  def track_activity!
+    recipient = if params[:grupo_preguntas_id].present?
+      GrupoPreguntas.find params[:grupo_preguntas_id]
+    else
+      GrupoPreguntas.first
+    end
+    @actor.create_activity :answer, owner: current_user, params: respuesta_params
+  end
 
   def respuesta
     @respuesta ||= if params[:id].present?
@@ -72,7 +83,6 @@ class RespuestasController < ApplicationController
   def grupo_preguntas
     @grupo_preguntas ||= if params[:grupo_preguntas_id].present?
       if only_save?
-        flash.now[:notice] = "El formulario ha sido guardado"
         GrupoPreguntas.find(params[:grupo_preguntas_id])
       else
         GrupoPreguntas.next_of(params[:grupo_preguntas_id])

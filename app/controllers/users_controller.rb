@@ -21,6 +21,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      @user.create_activity :create, owner: current_user, params: user_params
       redirect_to action: :index
     else
       render :new
@@ -30,6 +31,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find params[:id]
     if @user.update(user_params)
+      @user.create_activity :update, owner: current_user, params: user_params
       redirect_to action: :index
     else
       render :edit
@@ -38,6 +40,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find params[:id]
+    @user.create_activity :destroy, owner: current_user, params: @user.attributes.slice("nombres", "email")
     @user.destroy
     redirect_to action: :index
   end

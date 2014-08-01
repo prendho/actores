@@ -2,6 +2,7 @@ require 'digest/md5'
 
 class User < ActiveRecord::Base
   include Invitable
+  include PublicActivity::Common
 
   authenticates_with_sorcery!
 
@@ -18,7 +19,7 @@ class User < ActiveRecord::Base
 
 # methods
   def to_s
-    nombres or email
+    nombres.blank? ? email : nombres
   end
 
   def email_or_rand

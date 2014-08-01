@@ -12,6 +12,7 @@ class InvitationsController < ApplicationController
     if @user.update(user_params)
       @user.was_invited!
       login(user_params[:email], user_params[:password])
+      @user.create_activity :activate_account, owner: @user
       redirect_to root_path, notice: "Tu cuenta ha sido activada"
     else
       render :show
