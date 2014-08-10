@@ -1,4 +1,6 @@
 class GrupoPreguntas < ActiveRecord::Base
+  enum kind: [:actor, :iniciativa]
+
   has_many :preguntas, dependent: :destroy
 
   def to_s

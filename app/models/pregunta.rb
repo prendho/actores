@@ -13,6 +13,7 @@ class Pregunta < ActiveRecord::Base
 
   validates :title, presence: true
 
+  before_save :set_parent_grupo_pregunta_id, if: :is_child?
   after_save :set_other_pregunta_option_id
 
   def children=(children_attrs)
@@ -66,5 +67,10 @@ class Pregunta < ActiveRecord::Base
     if allow_other && other_pregunta_option_id.nil?
       update! other_pregunta_option_id: pregunta_options.last.id
     end
+  end
+
+  def set_parent_grupo_pregunta_id
+    raise "Ups!" unless is_child?
+    self.grupo_preguntas_id = parent.grupo_preguntas_id
   end
 end

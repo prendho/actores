@@ -1,0 +1,88 @@
+preguntas:
+  - Información general de la iniciativa:
+    - title: Nombre de la iniciativa de apoyo a emprendedores e innovadores (programa, proyecto y servicio)
+    - title: Descripción de la iniciativa (asesoría, mentoría, convocatorias, financiamiento, acceso a red de inversionistas, acceso a mercados, aceleración, etc)
+    - title: Valor agregado que ofrece la iniciativa (característica diferenciadora)
+    - title: ¿En qué provincia y cantón ejerce la iniciativa?
+      children:
+        - title: Provincia
+        - title: Cantón
+  - Información específica de la iniciativa:
+    - title: ¿Qué recursos tecnológicos cuenta para llevar a cabo su iniciativa?
+    - title: "Tipo de emprendimiento: social, dinámico, tradicional, etc"
+    - title: ¿A qué sector esta dirigida la iniciativa?
+      kind: 1
+      allow_other: true
+      options:
+        - Sector Agrícola
+        - Sector Manufacturero
+        - Sector Servicios
+        - Sector tecnológico
+        - Otro (especifique)
+    - title: Beneficios de la iniciativa para el emprendedor
+    - title: ¿Qué costo de inversión tiene para el emprendedor la iniciativa?
+    - title: ¿Recibe apoyo de alguna institución para la ejecución de la iniciativa? En caso afirmativo indique cuál
+    - title: ¿En qué modalidad se dicta la iniciativa?
+      kind: 1
+      allow_other: true
+      options:
+        - Presencial
+        - Semipresencial
+        - Distancia
+        - Otros (especifique)
+    - title: ¿Cuántos involucrados existen en la ejecución de las iniciativas?
+      kind: 1
+      options:
+        - De 1 a 5 personas
+        - De 6 a 10 personas
+        - De 11 a 15 personas
+        - De 16 a 20 personas
+        - Más de 20 personas
+    - title: ¿Cuáles son los indicadores de gestión o resultados que utilizan para medir su iniciativa?
+    - title: A Diciembre 2014, que resultado se espera alcanzar con la iniciativa? (en unidad / personas, emprendimiento o empresas)
+      kind: 1
+      allow_other: true
+      options:
+        - De 1 a 25
+        - De 26 a 50
+        - De 51 a 75
+        - De 76 a 100
+        - Más de 100 (especifique)
+  - Sobre la vinculación con los emprendimientos:
+    - title: ¿Qué características debe tener el potencial Emprendedor?
+      children:
+        - title: Competencias (arriesgado, determinado, conocedor del mercado que incursiona, proactivo, soluciona problemas)
+        - title: Género
+          kind: 2
+          options:
+            - Hombres
+            - Mujeres
+        - title: Edad
+          kind: 1
+          options:
+            - 18-24
+            - 25-30
+            - 31-50
+            - mayor a 50
+        - title: Nivel de educación
+    - title: "¿Cómo se desarrolla su iniciativa: convocatoria, filtrado, capacitación, concurso... (cuáles son las fases)?"
+    - title: ¿Cuáles son los medios de convocatoria de emprendedores?
+      kind: 1
+      allow_other: true
+      options:
+        - Vía online
+        - Radiodifusión
+        - Invitación directa
+        - Otros (especifique)
+    - title: ¿Cuál es el proceso de selección para elegir a los beneficiarios?
+      kind: 1
+      allow_other: true
+      options:
+        - La iniciativa es abierta
+        - A través de procesos de selección
+        - Acuerdos, convenios, cooperación
+        - Invitación Directa
+        - Otros (especifique)
+    - title: Duración de la iniciativa (de ser factible indique la fecha de ejecución de la iniciativa -inicio y fin)
+    - title: ¿Cómo es la relacion con el emprendedor una vez culminada la iniciativa? ¿Hay seguimiento? Cómo se provee?
+    - title: ¿Qué hacen con los emprendedores que no han sido beneficiados?

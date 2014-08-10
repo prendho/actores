@@ -1,4 +1,5 @@
-preguntas = YAML.load_file("#{Rails.root.to_s}/config/preguntas.yml")["preguntas"]
+preguntas_actor = YAML.load_file("#{Rails.root.to_s}/config/preguntas.yml")["preguntas"]
+preguntas_iniciativa = YAML.load_file("#{Rails.root.to_s}/config/preguntas_iniciativa.yml")["preguntas"]
 actores = YAML.load_file("#{Rails.root.to_s}/config/actores.yml")["actores"]
 
 if Pregunta.count > 0
@@ -7,8 +8,14 @@ if Pregunta.count > 0
   Pregunta.destroy_all
 end
 
-preguntas.each do |p|
-  grupo_preguntas = GrupoPreguntas.create!(title: p.keys.first)
+preguntas_actor.each do |p|
+  grupo_preguntas = GrupoPreguntas.create!(title: p.keys.first, kind: :actor)
+  p[p.keys.first].each do |attributes|
+    grupo_preguntas.preguntas.create!(attributes)
+  end
+end
+preguntas_iniciativa.each do |p|
+  grupo_preguntas = GrupoPreguntas.create!(title: p.keys.first, kind: :iniciativa)
   p[p.keys.first].each do |attributes|
     grupo_preguntas.preguntas.create!(attributes)
   end
