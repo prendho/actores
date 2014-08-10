@@ -53,6 +53,7 @@ gem "newrelic_rpm"
 gem "carrierwave"
 gem "cloudinary"
 gem "public_activity"
+gem "github-markdown"
 
 group :test, :development do
   gem "rspec-rails"

@@ -89,6 +89,7 @@ GEM
       multipart-post (>= 1.2, < 3)
     ffi (1.9.3)
     formatador (0.2.5)
+    github-markdown (0.6.6)
     guard (2.6.1)
       formatador (>= 0.2.4)
       listen (~> 2.7)
@@ -282,6 +283,7 @@ DEPENDENCIES
   cloudinary
   coffee-rails (~> 4.0.0)
   factory_girl_rails
+  github-markdown
   guard-rspec
   jbuilder (~> 2.0)
   jquery-rails
