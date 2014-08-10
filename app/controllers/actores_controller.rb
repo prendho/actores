@@ -1,4 +1,6 @@
 class ActoresController < ApplicationController
+  include Answerable
+
   before_action :require_login
   before_action :require_admin, only: [:edit, :update]
   before_action :find_actor, only: [:show, :edit, :update]
@@ -36,16 +38,11 @@ class ActoresController < ApplicationController
     params.require(:actor).permit :logo, :logo_cache, :remove_logo, :nombre, :acronimo
   end
 
-  def grupo_preguntas
-    @grupo_preguntas ||= if params[:preguntas].present?
-      GrupoPreguntas.actor.find(params[:preguntas])
-    else
-      GrupoPreguntas.actor.first
-    end
-  end
-  helper_method :grupo_preguntas
-
   def set_active_item
     @active_item = :actores
+  end
+
+  def grupo_preguntas_kind
+    :actor
   end
 end

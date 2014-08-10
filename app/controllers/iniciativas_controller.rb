@@ -1,4 +1,6 @@
 class IniciativasController < ApplicationController
+  include Answerable
+
   before_action :require_login
   before_action :find_actor
   before_action :find_iniciativa, only: [:show, :edit, :update, :destroy]
@@ -55,5 +57,9 @@ class IniciativasController < ApplicationController
 
   def set_active_item
     @active_item = :actores
+  end
+
+  def grupo_preguntas_kind
+    :iniciativa
   end
 end

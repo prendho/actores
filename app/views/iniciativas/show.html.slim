@@ -5,3 +5,5 @@ h2 = link_to @actor, actor_path(@actor)
 
 h3 = @iniciativa
 = GitHub::Markdown.render(@iniciativa.descripcion).html_safe
+
+= render "grupo_preguntas/show"

@@ -16,12 +16,14 @@ class GrupoPreguntas < ActiveRecord::Base
   end
 
   def number
-    self.class.pluck(:id).index(id) + 1
+    self.class.send(kind).pluck(:id).index(id) + 1
+  end
+
+  def sorted_preguntas
+    @sorted_preguntas ||= preguntas.to_a.sort_by(&:id)
   end
 
   def self.next_of(id, kind)
-    where(kind: kinds[kind])
-      .where("id > ?", id)
-      .first
+    send(kind).where("id > ?", id).first
   end
 end

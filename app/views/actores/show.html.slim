@@ -2,13 +2,7 @@ h2 = @actor
 
 = render "iniciativas"
 
-= render "respuestas/grupo_preguntas_nav", show: true
-
-h3 = grupo_preguntas.number_and_title
-
-.show-preguntas
-  - grupo_preguntas.preguntas.to_a.sort_by(&:id).each do |pregunta|
-    = render pregunta
+= render "grupo_preguntas/show"
 
 .pull-right
   = link_to "", new_actor_respuesta_path(@actor, grupo_preguntas_id: params[:preguntas]), class: "glyphicon glyphicon-edit btn btn-default"

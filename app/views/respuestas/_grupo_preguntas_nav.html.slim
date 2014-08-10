@@ -1,11 +1,11 @@
 .grupo-preguntas-nav
-  - grupos_preguntas = GrupoPreguntas.actor.all
+  - grupos_preguntas = GrupoPreguntas.send(grupo_preguntas_kind).all
   - grupos_preguntas.each_with_index do |grupo, index|
     - if grupo == grupo_preguntas
       span.active = grupo
-    - elsif defined?(show)
-      span = link_to grupo, actor_path(@actor, preguntas: grupo.id)
+    - elsif controller.action_name == "show"
+      span = link_to grupo, preguntas: grupo.id
     - else
-      span = link_to grupo, new_actor_respuesta_path(@actor, grupo_preguntas_id: grupo.id)
+      = link_to grupo, grupo_preguntas_id: grupo.id
     - unless (index+1) == grupos_preguntas.size
       .divider &raquo;

@@ -1,7 +1,7 @@
 class Pregunta < ActiveRecord::Base
   enum kind: [:write_answer, :option, :multiple_option]
 
-  scope :roots, -> { where(parent_id: nil) }
+  scope :roots, -> { where(parent_id: nil).order(:id) }
   scope :children, -> { where.not(parent_id: nil) }
 
   belongs_to :grupo_preguntas

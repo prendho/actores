@@ -1,0 +1,7 @@
+= render "respuestas/grupo_preguntas_nav"
+
+h3 = grupo_preguntas.number_and_title
+
+.show-preguntas
+  - grupo_preguntas.sorted_preguntas.each do |pregunta|
+    = render pregunta
