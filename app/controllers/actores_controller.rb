@@ -19,6 +19,7 @@ class ActoresController < ApplicationController
 
   def update
     if @actor.update(actor_params)
+      @actor.create_activity :update, owner: current_user, params: actor_params
       redirect_to actores_path, notice: "#{@actor} actualizado"
     else
       render :edit
