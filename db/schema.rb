@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140810164629) do
+ActiveRecord::Schema.define(version: 20140810170448) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,12 +34,13 @@ ActiveRecord::Schema.define(version: 20140810164629) do
   add_index "activities", ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type", using: :btree
 
   create_table "actores", force: true do |t|
-    t.string   "nombre",           null: false
+    t.string   "nombre",                        null: false
     t.string   "acronimo"
     t.string   "logo"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "default_logo_url"
+    t.integer  "iniciativas_count", default: 0
   end
 
   add_index "actores", ["nombre"], name: "index_actores_on_nombre", using: :btree
@@ -50,6 +51,15 @@ ActiveRecord::Schema.define(version: 20140810164629) do
   end
 
   add_index "grupos_preguntas", ["kind"], name: "index_grupos_preguntas_on_kind", using: :btree
+
+  create_table "iniciativas", force: true do |t|
+    t.integer  "actor_id",   null: false
+    t.string   "nombre",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "iniciativas", ["actor_id"], name: "index_iniciativas_on_actor_id", using: :btree
 
   create_table "pregunta_options", force: true do |t|
     t.string  "answer"

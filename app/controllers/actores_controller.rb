@@ -38,9 +38,9 @@ class ActoresController < ApplicationController
 
   def grupo_preguntas
     @grupo_preguntas ||= if params[:preguntas].present?
-      GrupoPreguntas.find(params[:preguntas])
+      GrupoPreguntas.actor.find(params[:preguntas])
     else
-      GrupoPreguntas.first
+      GrupoPreguntas.actor.first
     end
   end
   helper_method :grupo_preguntas

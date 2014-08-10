@@ -1,8 +1,14 @@
 .actor
-  = link_to actor do
-    .image = image_tag actor.logo_image_url, class: "actor-image"
-    .info
+  .image = image_tag actor.logo_image_url, class: "actor-image"
+  .info
+    = link_to actor do
       .nombre = actor
       .acronimo = actor.acronimo
+    - if actor.iniciativas_count === 0
+      .text-muted sin iniciativas
+    - else
+      - actor.iniciativas.each do |iniciativa|
+        = iniciativa
+
   - for_admin do
     = link_to "", edit_actor_path(actor), class: "glyphicon glyphicon-edit edit-actor"

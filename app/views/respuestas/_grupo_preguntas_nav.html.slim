@@ -1,5 +1,5 @@
 .grupo-preguntas-nav
-  - grupos_preguntas = GrupoPreguntas.all
+  - grupos_preguntas = GrupoPreguntas.actor.all
   - grupos_preguntas.each_with_index do |grupo, index|
     - if grupo == grupo_preguntas
       span.active = grupo
