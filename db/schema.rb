@@ -53,8 +53,9 @@ ActiveRecord::Schema.define(version: 20140810170448) do
   add_index "grupos_preguntas", ["kind"], name: "index_grupos_preguntas_on_kind", using: :btree
 
   create_table "iniciativas", force: true do |t|
-    t.integer  "actor_id",   null: false
-    t.string   "nombre",     null: false
+    t.integer  "actor_id",    null: false
+    t.string   "nombre",      null: false
+    t.text     "descripcion"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

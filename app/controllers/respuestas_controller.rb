@@ -85,7 +85,7 @@ class RespuestasController < ApplicationController
       if only_save?
         GrupoPreguntas.find(params[:grupo_preguntas_id])
       else
-        GrupoPreguntas.next_of(params[:grupo_preguntas_id])
+        GrupoPreguntas.next_of(params[:grupo_preguntas_id], :actor)
       end
     else
       GrupoPreguntas.first

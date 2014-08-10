@@ -1,0 +1,13 @@
+.pull-right = link_to "", new_actor_iniciativa_path(@actor), class: "glyphicon glyphicon-plus btn btn-default btn-xs"
+
+h4 Iniciativas
+
+- if @actor.iniciativas_count === 0
+  .text-muted Ninguna
+- else
+  ul
+    - @actor.iniciativas.each do |iniciativa|
+      li
+        = link_to iniciativa, actor_iniciativa_path(@actor, iniciativa)
+
+hr

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :invitations, only: [:show, :update]
 
   resources :actores, only: [:index, :show, :edit, :update] do
+    resources :iniciativas, except: :index
     resources :respuestas, only: [:new, :show, :edit, :create, :update]
     resources :preguntas, only: :show
   end

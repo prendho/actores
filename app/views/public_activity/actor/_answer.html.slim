@@ -1,2 +1,5 @@
 span llenó el formulario de
-=<> link_to activity.trackable, activity.trackable
+- if activity.trackable
+  =<> link_to activity.trackable, activity.trackable
+- else
+  |  un actor que ha sido eliminado

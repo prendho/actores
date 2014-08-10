@@ -1,4 +1,6 @@
 class Iniciativa < ActiveRecord::Base
+  include PublicActivity::Common
+
   belongs_to :actor, counter_cache: true
 
   validates :nombre, presence: true
