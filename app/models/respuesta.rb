@@ -1,6 +1,6 @@
 class Respuesta < ActiveRecord::Base
   belongs_to :user
-  belongs_to :actor
+  belongs_to :answerable, polymorphic: true
   has_many :respuesta_preguntas, dependent: :destroy
 
   scope :for_user, ->(user) { where(user: user) }
@@ -16,7 +16,7 @@ class Respuesta < ActiveRecord::Base
       .includes(:pregunta_options).includes(preguntas: :parent)
       .each do |pregunta|
       unless has_respuesta_pregunta_for?(pregunta)
-        respuesta_preguntas.build(pregunta: pregunta, answer: actor.answer_for(pregunta))
+        respuesta_preguntas.build(pregunta: pregunta, answer: answerable.answer_for(pregunta))
       end
     end
   end
@@ -33,9 +33,9 @@ class Respuesta < ActiveRecord::Base
     # we may need to refactor this
     pregunta = Pregunta.find(attributes["pregunta_id"])
     if attributes["answer"].blank?
-      pregunta.write_answer? || attributes["answer"].to_s == actor.answer_for(pregunta).to_s
+      pregunta.write_answer? || attributes["answer"].to_s == answerable.answer_for(pregunta).to_s
     else
-      attributes["answer"] == actor.answer_for(pregunta).to_s
+      attributes["answer"] == answerable.answer_for(pregunta).to_s
     end
   end
 end

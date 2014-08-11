@@ -2,6 +2,10 @@ class RespuestasController < ApplicationController
   before_action :require_login
   before_action :find_actor
 
+  def index
+    redirect_to action: :new, grupo_preguntas_id: params[:grupo_preguntas_id]
+  end
+
   def new
     @grupo_preguntas = GrupoPreguntas.find params[:grupo_preguntas_id] if params[:grupo_preguntas_id].present?
     build_respuestas!
@@ -92,6 +96,11 @@ class RespuestasController < ApplicationController
     end
   end
   helper_method :grupo_preguntas
+
+  def grupo_preguntas_kind
+    :actor
+  end
+  helper_method :grupo_preguntas_kind
 
   def find_actor
     @actor = Actor.find params[:actor_id]

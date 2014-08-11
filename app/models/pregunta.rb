@@ -57,8 +57,8 @@ class Pregunta < ActiveRecord::Base
     User.where id: answers_for(actor).pluck(:user_id)
   end
 
-  def answers_for(actor)
-    respuestas.where(actor_id: actor.id)
+  def answers_for(answerable)
+    respuestas.where(answerable: answerable)
   end
 
   private

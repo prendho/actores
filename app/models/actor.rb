@@ -6,8 +6,8 @@ class Actor < ActiveRecord::Base
 
 # relationships
   has_many :users
-  has_many :respuestas
   has_many :iniciativas
+  has_many :respuestas, as: :answerable
   has_many :respuesta_preguntas, through: :respuestas
 
 # validations

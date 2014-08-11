@@ -6,4 +6,9 @@ h2 = link_to @actor, actor_path(@actor)
 h3 = @iniciativa
 = GitHub::Markdown.render(@iniciativa.descripcion).html_safe
 
+hr
+
 = render "grupo_preguntas/show"
+
+.pull-right
+  = link_to "", new_actor_iniciativa_respuesta_path(@actor, @iniciativa, grupo_preguntas_id: params[:preguntas]), class: "glyphicon glyphicon-edit btn btn-default"

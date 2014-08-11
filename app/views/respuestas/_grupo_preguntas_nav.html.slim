@@ -6,6 +6,6 @@
     - elsif controller.action_name == "show"
       span = link_to grupo, preguntas: grupo.id
     - else
-      = link_to grupo, grupo_preguntas_id: grupo.id
+      span => link_to grupo, grupo_preguntas_id: grupo.id
     - unless (index+1) == grupos_preguntas.size
       .divider &raquo;

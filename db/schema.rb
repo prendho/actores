@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140810170448) do
+ActiveRecord::Schema.define(version: 20140811004351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,12 +91,13 @@ ActiveRecord::Schema.define(version: 20140810170448) do
 
   create_table "respuestas", force: true do |t|
     t.integer  "user_id"
-    t.integer  "actor_id"
+    t.integer  "answerable_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "answerable_type"
   end
 
-  add_index "respuestas", ["user_id", "actor_id"], name: "index_respuestas_on_user_id_and_actor_id", using: :btree
+  add_index "respuestas", ["user_id", "answerable_id", "answerable_type"], name: "respuestas_polymorphic", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                           null: false
