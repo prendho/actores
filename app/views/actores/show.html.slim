@@ -1,4 +1,4 @@
-h2 = @actor
+h2 = actor
 
 = render "iniciativas"
 
@@ -7,4 +7,4 @@ hr
 = render "grupo_preguntas/show"
 
 .pull-right
-  = link_to "", new_actor_respuesta_path(@actor, grupo_preguntas_id: params[:preguntas]), class: "glyphicon glyphicon-edit btn btn-default"
+  = link_to "", new_actor_respuesta_path(actor, grupo_preguntas_id: params[:preguntas]), class: "glyphicon glyphicon-edit btn btn-default"

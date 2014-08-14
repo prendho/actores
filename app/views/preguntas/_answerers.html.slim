@@ -1,6 +1,7 @@
-- pregunta.answerers_for(@actor).each do |user|
+- pregunta.answerers_for(resource).each do |user|
   = link_to user_path(user) do
     = image_tag user.gravatar, class: "user-gravatar-really-tiny ttip", title: user, data: { placement: "bottom" }
 
-- if pregunta.answers_for(@actor).any?
-  = link_to "", actor_pregunta_path(@actor, pregunta), class: "glyphicon glyphicon-list-alt ttip", title: "historial", data: { placement: "bottom" }
+- if pregunta.answers_for(resource).any?
+  - path = resource.is_a?(Actor) ? actor_pregunta_path(actor, pregunta) : actor_iniciativa_pregunta_path(actor, iniciativa, pregunta)
+  = link_to "", path, class: "glyphicon glyphicon-list-alt ttip", title: "historial", data: { placement: "bottom" }

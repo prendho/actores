@@ -5,6 +5,10 @@ module Answerable
     helper_method :grupo_preguntas, :grupo_preguntas_kind
   end
 
+  def is_answerable?
+    true
+  end
+
   private
 
   def grupo_preguntas

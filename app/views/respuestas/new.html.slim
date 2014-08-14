@@ -1,6 +1,6 @@
-h2 = @actor
+h2 = actor
 
-= nested_form_for [@actor, respuesta] do |f|
+= nested_form_for [actor, respuesta] do |f|
 
   = render "respuestas/grupo_preguntas_nav"
 
@@ -8,12 +8,13 @@ h2 = @actor
 
   = hidden_field_tag :grupo_preguntas_id, grupo_preguntas.id
   = hidden_field_tag :only_save
+  = hidden_field_tag :iniciativa_id, iniciativa.try(:id)
 
   = f.fields_for :respuesta_preguntas, respuesta_preguntas do |r_f|
     = render "preguntas/pregunta_form", f: r_f
 
   .actions
-    = link_to "Cancelar", actor_path(@actor, preguntas: params[:grupo_preguntas_id]), class: "btn btn-link"
+    = link_to "Cancelar", resource_path, class: "btn btn-link"
     = f.submit submit_text.html_safe, class: "btn btn-primary", data: { disable_with: "Enviando" }
 
   #form-not-saved.text-danger.hidden

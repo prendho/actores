@@ -1,6 +1,5 @@
 class RespuestasController < ApplicationController
   before_action :require_login
-  before_action :find_actor
 
   def index
     redirect_to action: :new, grupo_preguntas_id: params[:grupo_preguntas_id]
@@ -9,12 +8,10 @@ class RespuestasController < ApplicationController
   def new
     @grupo_preguntas = GrupoPreguntas.find params[:grupo_preguntas_id] if params[:grupo_preguntas_id].present?
     build_respuestas!
-  end
-
-  def edit
     render :new
   end
-  alias_method :show, :edit
+  alias_method :show, :new
+  alias_method :edit, :new
 
   def create
     if respuesta.update(respuesta_params)
@@ -22,17 +19,52 @@ class RespuestasController < ApplicationController
       build_respuestas!
       track_activity!
     else
+      raise "Ups!"
       grupo_preguntas
     end
     if @grupo_preguntas
       render :new
     else
-      redirect_to controller: :actores, action: :show, id: @actor.id
+      # the form has been completely fulfilled
+      if iniciativa_present?
+        redirect_to controller: :iniciativas, action: :show, actor_id: actor.id, id: resource.id
+      else
+        redirect_to controller: :actores, action: :show, id: actor.id
+      end
     end
   end
   alias_method :update, :create
 
+  protected
+
+  def resource
+    @resource ||= iniciativa_present? ? iniciativa : actor
+  end
+
+  def actor
+    @actor ||= Actor.find params[:actor_id]
+  end
+  helper_method :actor
+
+  def iniciativa
+    @iniciativa ||= Iniciativa.find(params[:iniciativa_id]) if iniciativa_present?
+  end
+  helper_method :iniciativa
+
+  def resource_path
+    if resource.is_a?(Actor)
+      actor_path(actor, preguntas: params[:grupo_preguntas_id])
+    else
+      actor_iniciativa_path(actor, iniciativa, preguntas: params[:grupo_preguntas_id])
+    end
+  end
+  helper_method :resource_path
+
   private
+
+  def iniciativa_present?
+    params[:iniciativa_id].present?
+  end
 
   def track_activity!
     recipient = if params[:grupo_preguntas_id].present?
@@ -40,14 +72,15 @@ class RespuestasController < ApplicationController
     else
       GrupoPreguntas.first
     end
-    @actor.create_activity :answer, owner: current_user, params: respuesta_params
+    # let's keep the activity on the actor to keep it simple
+    actor.create_activity :answer, owner: current_user, params: respuesta_params
   end
 
   def respuesta
     @respuesta ||= if params[:id].present?
-      @actor.respuestas.for_user(current_user).find(params[:id])
+      resource.respuestas.for_user(current_user).find(params[:id])
     else
-      @actor.respuestas.new(user: current_user)
+      resource.respuestas.new(user: current_user)
     end
   end
   helper_method :respuesta
@@ -89,7 +122,8 @@ class RespuestasController < ApplicationController
       if only_save?
         GrupoPreguntas.find(params[:grupo_preguntas_id])
       else
-        GrupoPreguntas.next_of(params[:grupo_preguntas_id], :actor)
+        kind = iniciativa_present? ? :iniciativa : :actor
+        GrupoPreguntas.next_of(params[:grupo_preguntas_id], kind)
       end
     else
       GrupoPreguntas.first
@@ -98,13 +132,9 @@ class RespuestasController < ApplicationController
   helper_method :grupo_preguntas
 
   def grupo_preguntas_kind
-    :actor
+    grupo_preguntas.kind.to_sym
   end
   helper_method :grupo_preguntas_kind
-
-  def find_actor
-    @actor = Actor.find params[:actor_id]
-  end
 
   def set_active_item
     @active_item = :actores

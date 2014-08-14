@@ -8,12 +8,13 @@ Rails.application.routes.draw do
   resources :sessions, only: :create
   resources :invitations, only: [:show, :update]
 
-  resources :actores, only: [:index, :show, :edit, :update] do
+  concern :answerable do
     resources :respuestas, only: [:index, :new, :show, :edit, :create, :update]
     resources :preguntas, only: :show
-    resources :iniciativas, except: :index do
-      resources :respuestas
-    end
+  end
+
+  resources :actores, only: [:index, :show, :edit, :update], concerns: :answerable do
+    resources :iniciativas, except: :index, concerns: :answerable
   end
 
   get "me", to: "me#index", as: :me

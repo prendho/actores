@@ -2,11 +2,10 @@ class IniciativasController < ApplicationController
   include Answerable
 
   before_action :require_login
-  before_action :find_actor
   before_action :find_iniciativa, only: [:show, :edit, :update, :destroy]
 
   def new
-    @iniciativa = @actor.iniciativas.new
+    @iniciativa = actor.iniciativas.new
   end
 
   def edit
@@ -14,7 +13,7 @@ class IniciativasController < ApplicationController
   alias_method :show, :edit
 
   def create
-    @iniciativa = @actor.iniciativas.new(iniciativa_params)
+    @iniciativa = actor.iniciativas.new(iniciativa_params)
     if @iniciativa.save
       @iniciativa.create_activity :create, owner: current_user, params: iniciativa_params
       flash.now[:notice] = "Iniciativa creada"
@@ -38,17 +37,27 @@ class IniciativasController < ApplicationController
     @iniciativa.create_activity :destroy, owner: current_user, params: @iniciativa.attributes.slice("nombre", "descripcion")
     @iniciativa.destroy
     flash.now[:notice] = "Iniciativa eliminada"
-    redirect_to actor_path(@actor)
+    redirect_to actor_path(actor)
   end
+
+  protected
+
+  def iniciativa
+    @iniciativa ||= Iniciativa.find(params[:id])
+  end
+  helper_method :iniciativa
+  alias_method :resource, :iniciativa
+  helper_method :resource
+
+  def actor
+    @actor ||= Actor.find(params[:actor_id])
+  end
+  helper_method :actor
 
   private
 
-  def find_actor
-    @actor = Actor.find params[:actor_id]
-  end
-
   def find_iniciativa
-    @iniciativa = Iniciativa.find params[:id]
+    @iniciativa = Iniciativa.find(params[:id])
   end
 
   def iniciativa_params

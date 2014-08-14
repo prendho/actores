@@ -3,9 +3,11 @@
   - grupos_preguntas.each_with_index do |grupo, index|
     - if grupo == grupo_preguntas
       span.active = grupo
-    - elsif controller.action_name == "show"
+    - elsif controller.respond_to?(:is_answerable?) && controller.action_name == "show"
       span = link_to grupo, preguntas: grupo.id
+    - elsif controller.is_a?(RespuestasController) && controller.action_name == "show"
+      span = link_to grupo, grupo_preguntas_id: grupo.id
     - else
-      span => link_to grupo, grupo_preguntas_id: grupo.id
+      span => link_to grupo, grupo_preguntas_id: grupo.id, iniciativa_id: iniciativa.try(:id)
     - unless (index+1) == grupos_preguntas.size
       .divider &raquo;
