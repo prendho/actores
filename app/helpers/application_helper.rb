@@ -14,4 +14,18 @@ module ApplicationHelper
   def for_admin
     yield if current_user && current_user.admin?
   end
+
+  def breadcrumbs(*links)
+    content_tag :ol, class: "breadcrumb" do
+      links.map do |link|
+        if link.is_a?(String)
+          content_tag :li, link, class: "active"
+        elsif link.is_a?(Hash)
+          content_tag :li do
+            link_to link[:name], link[:path]
+          end
+        end
+      end.join("").html_safe
+    end
+  end
 end

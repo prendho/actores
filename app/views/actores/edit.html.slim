@@ -1,3 +1,5 @@
+= breadcrumbs({name: "Actores", path: actores_path}, {name: actor.to_s, path: actor_path(actor)}, "Editar")
+
 = simple_form_for actor do |f|
   .form-group = f.input :nombre, input_html: { class: "form-control" }
   .form-group = f.input :acronimo, input_html: { class: "form-control" }

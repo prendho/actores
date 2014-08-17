@@ -1,4 +1,6 @@
-h2 = link_to @actor, actor_path(@actor)
+= breadcrumbs({name: "Actores", path: actores_path}, {name: actor.to_s, path: actor_path(actor)}, "Nueva iniciativa")
+
+h2 = @actor
 
 h3 Nueva iniciativa
 
