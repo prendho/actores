@@ -1,6 +1,8 @@
 h2 = @actor
 
-h3 = link_to grupo_preguntas.number_and_title, actor_path(@actor, preguntas: grupo_preguntas.id)
+h3 = iniciativa
+
+h3 = link_to grupo_preguntas.number_and_title, pregunta_path
 h3 = @pregunta.number_and_title
 
 h4 Historial
@@ -12,7 +14,7 @@ table.datatables.pregunta-historial-table
       th Usuario
       th Respuesta
   tbody
-    - @pregunta.answers_for(@actor).includes(:user).each do |respuesta|
+    - @pregunta.answers_for(resource).includes(:user).each do |respuesta|
       tr
         td = l respuesta.updated_at, format: :short
         td
