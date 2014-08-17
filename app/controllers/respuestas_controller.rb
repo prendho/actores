@@ -60,6 +60,17 @@ class RespuestasController < ApplicationController
   end
   helper_method :resource_path
 
+  def breadcrumbs_hash
+    @breadcrumbs_hash = [ {name: "Actores", path: actores_path},
+                          {name: actor.to_s, path: actor_path(actor)}]
+    if iniciativa.present?
+      @breadcrumbs_hash << {name: iniciativa.to_s, path: actor_iniciativa_path(actor, iniciativa)}
+    end
+    @breadcrumbs_hash << grupo_preguntas.to_s
+    @breadcrumbs_hash
+  end
+  helper_method :breadcrumbs_hash
+
   private
 
   def iniciativa_present?
