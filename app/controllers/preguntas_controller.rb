@@ -1,5 +1,6 @@
 class PreguntasController < ApplicationController
   attr_reader :actor
+  helper_method :actor
 
   before_action :require_login
   before_action :require_admin
@@ -34,12 +35,23 @@ class PreguntasController < ApplicationController
   end
   helper_method :resource
 
-  def pregunta_path
+  def resource_pregunta_path
     if iniciativa.present?
       actor_iniciativa_path(@actor, iniciativa, preguntas: grupo_preguntas.id)
     else
       actor_path(@actor, preguntas: grupo_preguntas.id)
     end
   end
-  helper_method :pregunta_path
+
+  def breadcrumbs_hash
+    @hash = [ {name: "Actores", path: actores_path},
+              {name: actor.to_s, path: actor_path(actor)} ]
+    if iniciativa.present?
+      @hash << {name: iniciativa.to_s, path: actor_iniciativa_path(actor, iniciativa)}
+    end
+    @hash << {name: grupo_preguntas.to_s, path: resource_pregunta_path}
+    @hash << @pregunta.to_s
+    @hash
+  end
+  helper_method :breadcrumbs_hash
 end
