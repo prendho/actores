@@ -47,7 +47,7 @@ actores.each do |attributes|
   actor.update! attributes
 
   # create a respuesta for descripcion
-  respuesta = Respuesta.create!(user: user, actor: actor)
+  respuesta = Respuesta.create!(user: user, answerable: actor)
   RespuestaPregunta.create!(respuesta: respuesta,
                             pregunta: Pregunta.first, # we assume first question is descripcion
                             answer: descripcion)
