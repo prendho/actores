@@ -15,6 +15,7 @@
  *= require alertify.default
  *= require jquery.dataTables.min
  *= require chosen.min
+ *= require nprogress
  *= require_tree .
  *= require_self
  */

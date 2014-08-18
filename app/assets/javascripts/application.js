@@ -19,4 +19,5 @@
 //= require chosen.jquery.min
 //= require jquery.autogrowtextarea.min
 //= require spin.min
+//= require nprogress
 //= require_tree .
