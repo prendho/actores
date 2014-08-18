@@ -2,8 +2,7 @@ class Actor < ActiveRecord::Base
   include PublicActivity::Common
   include AnswerableModel
 
-  scope :sorted, -> { order(iniciativas_count: :desc).order(:nombre) }
-  scope :like, ->(query) { where("nombre ILIKE :query OR acronimo ILIKE :query", query: "%#{query}%") }
+  scope :sorted, -> { order(:nombre) }
 
 # relationships
   has_many :users

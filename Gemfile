@@ -54,6 +54,7 @@ gem "carrierwave"
 gem "cloudinary"
 gem "public_activity"
 gem "github-markdown"
+gem "searchlight"
 
 group :test, :development do
   gem "rspec-rails"

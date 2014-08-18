@@ -6,7 +6,7 @@ class ActoresController < ApplicationController
 
   def index
     @actores = if params[:search].present?
-      Actor.like(params[:search]).sorted
+      ActorSearch.new(query: params[:search]).results.sorted
     else
       Actor.sorted
     end
