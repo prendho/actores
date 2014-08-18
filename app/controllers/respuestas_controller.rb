@@ -129,15 +129,15 @@ class RespuestasController < ApplicationController
   end
 
   def grupo_preguntas
+    kind = iniciativa_present? ? :iniciativa : :actor
     @grupo_preguntas ||= if params[:grupo_preguntas_id].present?
       if only_save?
         GrupoPreguntas.find(params[:grupo_preguntas_id])
       else
-        kind = iniciativa_present? ? :iniciativa : :actor
         GrupoPreguntas.next_of(params[:grupo_preguntas_id], kind)
       end
     else
-      GrupoPreguntas.first
+      GrupoPreguntas.send(kind).first
     end
   end
   helper_method :grupo_preguntas
